@@ -1,0 +1,29 @@
+ .page-footer {background-color: #4a4545db;}
+    input.form-control {
+        max-width: 300px;
+        display: inline;
+    }
+    
+    li.list-inline-item {
+        font-size: 50px;
+    }
+    
+    .fab{
+        margin-right:50px;
+        margin-left:50px;
+    }
+    .mauhong{
+        color:rgba(255, 118, 141, 0.89);
+    }
+#cart{
+    position: relative;
+} 
+#count{
+    position: absolute;
+    top:0;
+    left:30px;
+    background-color: red;
+    color: white;
+    padding:0px 5px 0px 5px;
+    border-radius: 10px;
+}

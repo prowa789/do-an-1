@@ -1,0 +1,15 @@
+img{
+    width:80px;
+}
+#cart{
+    position: relative;
+} 
+#count{
+    position: absolute;
+    top:0;
+    left:30px;
+    background-color: red;
+    color: white;
+    padding:0px 5px 0px 5px;
+    border-radius: 10px;
+}

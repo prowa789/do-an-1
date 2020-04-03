@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name=”viewport” content=”width=device-width, initial-scale=1″>
+    <link rel="stylesheet" href="/styles/product.css">
+    <script src="https://kit.fontawesome.com/a63be79b05.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+    <%- include('navbarProduct'); -%>
+    <div class="container">
+      <br>  
+      <h1>Product</h1>
+        <form action="/product/search" method="GET">
+          <div class="cc d-flex justify-content-end">
+            <input type="text" name="q" class="form-control mr-2 nhap">
+            <button class="btn btn-info timkiem">Tìm kiếm</button>
+          </div>
+        </form>
+        <br><br><br>
+        <div class="container" >
+          <div class="row d-flex">
+            <% for(var i=0;i<product.length;i++){ %>
+              <div class="col-sm-3 col-xs-6 mb-3 pr-3" style="height: 420px;">
+                <div class="hinhanh" style="height:180px;">
+                  <img class="card-img-top" src="<%=product[i].image%>" alt="Card image cap" style="width: 180px;">
+                </div>
+                
+                <div class="card-body">
+                  <h5 class="card-title" style="font-size: 18px;"><%=product[i].name%></h5>
+                  <p class="card-text" style="color:red;font-weight: 500;"><%=product[i].price%> $</p>
+                  <p class="card-text"style="height: 50px; overflow:hidden;font-size:15px;color:blue"><%=product[i].description%></p>
+                  <a href="/cart/add/<%= product[i]._id %>" class="btn btn-primary" style="float:right">Add to cart</a>
+                </div>
+              </div>
+           <% } %>
+          </div>
+        </div>
+        <%- include('paginationBar'); -%>
+      </div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
