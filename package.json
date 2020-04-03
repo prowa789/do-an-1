@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "k co",
   "main": "server.js",
+  "dev": "nodemon --inspect server.js",
+  "start": "node server.js",
+  "test": "echo \"Error: no test specified\" && exit 1",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cookie-parse": "^0.4.0",
@@ -16,8 +19,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --inspect server.js"
+    
   },
   "author": "",
   "license": "ISC"
