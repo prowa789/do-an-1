@@ -8,7 +8,7 @@ module.exports.cartAdd = async function(req,res){
         return;
     }
     var product = await Product.findById(productId);
-    Session.findOneAndUpdate({ _id: sessionId },{ $inc: { totalProduct: 1 } },{new:true},function(doc){
+    Session.findOneAndUpdate({ _id: sessionId },{ $inc: { totalProduct: 1 } },{new:true},function(err,doc){
         for (let i = 0; i < doc.cart.length; i++) {
             if (doc.cart[i].productId == productId) {
               doc.cart[i].numberOfItem ++;
@@ -32,7 +32,7 @@ module.exports.cartAdd = async function(req,res){
 module.exports.checkout = function(req,res){
     var sessionId = req.signedCookies.sessionId;
     //code in here
-    Session.findById(sessionId,function(doc){
+    Session.findById(sessionId,function(err,doc){
         var sum= sum? sum:0;
         for(var i=0;i<doc.cart.length;i++){
             sum += doc.cart[i].price*doc.cart[i].numberOfItem;
@@ -50,7 +50,7 @@ module.exports.cartSubstract = async function(req,res){
         res.redirect('/product'); 
         return;
     }
-    Session.findById({ _id: sessionId },function(doc){
+    Session.findById({ _id: sessionId },function(err,doc){
         if(doc.totalProduct>0){
             doc.totalProduct--;
         }
