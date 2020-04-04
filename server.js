@@ -12,7 +12,10 @@ var sessionMiddleware = require('./middleware/sessionMiddleware');
 var cartRoute = require('./routes/cartRoute');
 //database
 var mongoose =require('mongoose');
-mongoose.connect(process.env.MONGO_URL,{ useNewUrlParser: true });
+mongoose.connect(process.env.MONGO_URL,{ 
+    useNewUrlParser: true, 
+    useUnifiedTopology:true
+});
 console.log(process.env.MONGO_URL);
 mongoose.set('useFindAndModify', false);
 //dadasdsad
