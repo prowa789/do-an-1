@@ -13,6 +13,7 @@ var cartRoute = require('./routes/cartRoute');
 //database
 var mongoose =require('mongoose');
 mongoose.connect(process.env.MONGO_URL,{ useNewUrlParser: true });
+console.log(process.env.MONGO_URL);
 mongoose.set('useFindAndModify', false);
 //dadasdsad
 
@@ -24,10 +25,10 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 app.use(express.static('./public'));//khai bao de file tinh o thu muc public
 app.use(sessionMiddleware.cc);
 // routes
-app.use('/',userRoute);
-app.use('/',productRoute);
-app.use('/',loginRoute);
-app.use('/',cartRoute);
+app.use('/user',userRoute);
+app.use('/product',productRoute);
+app.use('/login',loginRoute);
+app.use('/cart',cartRoute);
 
 var port = process.env.PORT || 3001;
 
