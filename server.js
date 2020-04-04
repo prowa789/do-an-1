@@ -32,9 +32,9 @@ app.use('/',cartRoute);
 var port = process.env.PORT || 3001;
 
 app.get('/',function(req,res){
-    res.send("alo1234");
+    res.render('HomePage');
 })
 
 app.listen(port);
 
-console.log("server listening in port: "+port)
+console.log("server listening in port: "+port);
