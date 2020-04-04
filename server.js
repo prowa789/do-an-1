@@ -29,6 +29,10 @@ app.use('/',productRoute);
 app.use('/',loginRoute);
 app.use('/',cartRoute);
 var port = process.env.PORT || 3001;
+app.get('/',function(req,res){
+    res.send("alo1234");
+})
+
 app.listen(port);
 
 //chon tat ca cac chu giong nhau ctrl +f2
