@@ -6,7 +6,7 @@ module.exports.login =function(req,res){
 module.exports.postLogin = function(req,res){
     var username= req.body.username;
     var password = req.body.password;
-    User.findOne({username:username},function(err,user){
+    User.findOne({username:username},function(user){
         var user = user;
         var errors =[];
         if(!user){
