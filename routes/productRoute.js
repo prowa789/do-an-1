@@ -1,5 +1,5 @@
 var express = require('express');
-var controller = require('../controller/Controller');
+var controller = require('../controller/productController');
 var route=express.Router();
 var autheMid =require('../middleware/authMiddleware');
 
