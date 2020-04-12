@@ -1,15 +1,24 @@
 img{
-    width:80px;
+    width:60px;
 }
-#cart{
-    position: relative;
-} 
-#count{
-    position: absolute;
-    top:0;
-    left:30px;
-    background-color: red;
-    color: white;
-    padding:0px 5px 0px 5px;
-    border-radius: 10px;
+a.btn{
+}
+@media only screen and (max-width:739px){
+    img{
+        width:40px;
+    }
+    a.btn{
+        text-align: center;
+        width: 20px;
+    }
+    #stt{
+        display: none;
+    }
+    #name{
+        width: 20%;
+
+    }
+    #price{
+        /* width: 120px; */
+    }
 }

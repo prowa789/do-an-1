@@ -6,6 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="/styles/checkout.css">
+    <link rel="stylesheet" href="/styles/product.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="/styles/product.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
@@ -13,27 +17,27 @@
     <%- include('navbarProduct'); -%>
     <div class="container">
       <br>  
-      <h1 class="mr-2 mb-1" style="display: inline;">Danh sach san pham da chon</h1>      
+      <h1 class="mr-2 mb-1" style="display: inline;">Giỏ hàng</h1>      
         <br><br><br>
         <table class="table">
             <thead>
                 <tr>
-                  <th scope="col">STT</th>
-                  <th scope="col">Image</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Price</th>
+                  <th scope="col" id="stt">STT</th>
+                  <th scope="col" id="image">Image</th>
+                  <th scope="col" id="name">Name</th>
+                  <th scope="col" id="price">Price</th>
                   <th scope="col">So luong</th>
                 </tr>
               </thead>
             <% for(var i=0;i < product.length;i++){ %>
                 <tr>
-                    <td scope="col"><%= i+1 %></td>
-                    <td scope="col"><img src="<%=product[i].image%>" alt=""></td>
-                    <td scope="col"><%= product[i].name %></td>
-                    <td scope="col"><%= product[i].price %> $</td>
+                    <td scope="col" id="stt"><%= i+1 %></td>
+                    <td scope="col" id="image"><img src="<%=product[i].image%>" alt=""></td>
+                    <td scope="col" id="name"><%= product[i].name %></td>
+                    <td scope="col" id="price"><%= product[i].price %> $</td>
                     <td scope="col">
                       <a href="/cart/substract/<%= product[i].productId %>" class="btn btn-success">-</a>
-                      <button class="btn btn-primary"><%= product[i].numberOfItem%></button>
+                      <strong><%= product[i].numberOfItem%></strong>
                       <a href="/cart/add/<%= product[i].productId %>" class="btn btn-success">+</a>
                     </td>
                     
