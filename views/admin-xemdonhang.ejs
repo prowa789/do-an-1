@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Chi tiết đơn hàng</title>
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="/css/admin.css">
+<script src="/js/admin.js"></script>
+  </head>
+  <body>
+    <%- include('admin-navbar'); -%>
+    <!-- breadcum -->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+      <li class="breadcrumb-item"><a href="#">Chi tiết đơn hàng</a></li>
+  </ol>
+    <div class="container-fluid">
+        <div class="mb-3 mt-3">
+          <h1 style="font-size: 39px;">Chi tiết đơn hàng</h1>
+        </div>
+        <h3>Thông tin người mua</h2>
+        <table class="table" style="background-color: #bdc3c7;border: 1px black solid;">
+          <tbody>
+             <tr>
+                <td style="padding-left: 3rem;font-weight: bold;">Người mua</td>
+                <td>Lê Tuấn Anh</td>
+             </tr>
+             <tr>
+                <td style="padding-left: 3rem;font-weight: bold;">Email</td>
+                <td>asacnuoc@gmail.com</td>
+             </tr>
+             <tr>
+                <td style="padding-left: 3rem;font-weight: bold;">SĐT</td>
+                <td>0825050178</td>
+             </tr>
+             <tr>
+                <td style="padding-left: 3rem;font-weight: bold;">Địa chỉ</td>
+                <td>Số nhà 34, ngách 62, ngõ 203 Kim Ngưu</td>
+             </tr>
+          </tbody>
+        </table>
+        <h3>Sản phẩm đặt</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Mã sản phẩm</th>
+              <th scope="col">Tên sản phẩm</th>
+              <th scope="col">Ảnh sản phẩm</th>
+              <th scope="col">Số lượng</th>
+              <th scope="col">Đơn giá</th>
+              <th scope="col">Thành tiền</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>DT001</td>
+              <td>Iphone X</td>
+              <td><img src="https://cdn.tgdd.vn/Products/Images/42/200533/iphone-11-pro-max-green-400x400.jpg" alt="" style="width: 50px;"></td>
+              <td>1</td>
+              <td>300</td>
+              <td>300</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="float: right;font-weight: 500;font-size:30px;color: red;" class="mb-5">Tổng tiền :500000đ</p>
+      </div>
+    </div>
+  </body>
+</html>

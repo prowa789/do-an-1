@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Admin-Login</title>
+    <link rel="shortcut icon" href="/images/favicon.ico">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,11 +10,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
-  <body>
-    <%- include('navbarUser'); -%>
-    <br>
-    <div class="container">
-      
+  <body style="background-image: url('/images/bg-img.jpg');color: white;">
+    <div class="container"> 
       <% if(locals.errors){ %>
         <% for(var i = 0;i < locals.errors.length;i++){ %>
           <div class="alert alert-warning" role="alert">
@@ -22,14 +20,13 @@
         <% } %>
       <% } %>
 
-      
       <form action="" method="POST">
-        <div class="form-group" style="width: 100%;margin: auto;max-width:400px;">
+        <div class="form-group mt-5" style="width: 100%;margin: auto;max-width:400px;">
           <h2>Đăng nhập</h2>
           <label for="">Tài khoản</label>
           <input type="text" class="form-control" name="username">
           <label for="">Mật khẩu</label>
-          <input type="text" class="form-control" name="password">
+          <input type="password" class="form-control" name="password">
           <br>
           <button class="btn btn-primary" type="submit">Đăng nhập</button>
         </div>

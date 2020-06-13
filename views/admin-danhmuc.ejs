@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Danh mục</title>
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="/css/admin.css">
+<script src="/js/admin.js"></script>
+</head>
+  <body>
+    <%- include('admin-navbar'); -%>
+    <!-- breadcum -->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
+      <li class="breadcrumb-item"><a href="">Danh mục</a></li>
+  </ol>
+    <div class="container-fluid">
+        <div class="mb-3 mt-3">
+          <h1 class="d-inline">Danh mục</h1>
+        <a href="/admin/danhmuc/them" class="btn btn-success">Thêm</a>
+        </div>
+        
+        <table class="table" id="table1">
+          <thead>
+            <tr>
+              <th scope="col">Mã danh mục</th>
+              <th scope="col">Tên danh mục</th>
+              <th>Chức năng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(var i=0;i<danhmuc.length;i++){ %>
+            <tr>
+              <th scope="row"><%=danhmuc[i].id_danh_muc%></th>
+              <td><%=danhmuc[i].ten_danh_muc%></td>
+              <td>
+                <a href="/admin/danhmuc/xoa/<%=danhmuc[i].id_danh_muc%>" class="btn btn-danger">Xóa</a>
+                <a href="" class="btn btn-dark">Sửa</a>
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+
+    
+    
+  </body>
+</html>

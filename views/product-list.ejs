@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Điện thoại</title>
+
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="./css/style.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
+
+    <link href="./css/font-awesome.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+</head>
+
+<body>
+    <%- include('header'); -%>
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">Trang chủ</a></li>
+                            <li><a href="/">Điện thoại</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                    <!-- sidenav-section -->
+                    <div id='cssmenu'>
+                        <ul>
+                            <li class='has-sub'><a href='#'>Thương hiệu</a>
+                                <ul>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" class="checkedbrand" data-brand="samsung">
+                                            <span class="checkbox-list">Samsung
+                                        </label>
+
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" class="checkedbrand" data-brand="apple">
+                                            <span class="checkbox-list">Apple</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" class="checkedbrand" data-brand="htc">
+                                            <span class="checkbox-list">HTC</span>
+                                        </label>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" class="checkedbrand" data-brand="huawei">
+                                            <span class="checkbox-list">Huawei</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" class="checkedbrand" data-brand="vivo">
+                                            <span class="checkbox-list">Vivo</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" class="checkedbrand" data-brand="oppo">
+                                            <span class="checkbox-list">OPPO</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" class="checkedbrand" data-brand="nokia">
+                                            <span class="checkbox-list">Nokia</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" class="checkedbrand" data-brand="sony">
+                                            <span class="checkbox-list">Sony</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" class="checkedbrand" data-brand="coolpad">
+                                            <span class="checkbox-list">Coolpad</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" class="checkedbrand" data-brand="mobell">
+                                            <span class="checkbox-list">Mobell</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" class="checkedbrand" data-brand="itel">
+                                            <span class="checkbox-list">Itel</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class='has-sub'><a href='#'>Giá</a>
+                                <ul>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" class="checkedprice" data-price="1">
+                                            <span class="checkbox-list">Dưới 1tr</span>
+                                        </label>
+                                    </li>
+                                    <li><span>
+                                            <label>
+                                                <input type="checkbox" class="checkedprice" data-price="0104">
+                                                <span class="checkbox-list">1tr - 4tr</span>
+                                            </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" class="checkedprice" data-price="0410">
+                                            <span class="checkbox-list">4tr - 10tr</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" class="checkedprice" data-price="1015">
+                                            <span class="checkbox-list">10tr - 15tr</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" class="checkedprice" data-price="1525">
+                                            <span class="checkbox-list">15tr - 25tr</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" class="checkedprice" data-price="25">
+                                            <span class="checkbox-list">Trên 25tr</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button" class="btn btn-success btn-block"
+                                    id="btn-filter">OK</button>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                    <div class="row">
+                        <% for(var i=0;i<dienthoai.length;i++){ %>
+                        <a href="/dienthoai/<%=dienthoai[i].phone_id%>" class="col-sm-3 col-xs-6" style="margin-bottom:20px;height: 350px;">
+                            <div class="hinhanh" style="height:180px;">
+                                <img class="card-img-top" src="<%=dienthoai[i].hinh_anh%>" alt="Card image cap"
+                                    style="width: 150px;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title" style="font-size: 20px;font-weight: 500;">
+                                    <%=dienthoai[i].name%></h5>
+                                <p class="card-text" style="color:red;font-weight: 500;margin-top: -5px;">
+                                    <%=dienthoai[i].gia%> VNĐ</p>
+                                <p class="card-text" style="overflow:hidden;font-size:15px;color:blue;margin-top:-20px">
+                                    <%=dienthoai[i].promotion%></p>
+                            </div>
+                        </a>
+                        <% } %>
+                    </div>
+                    <%- include('page-bar'); -%>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <%- include('footer'); -%>
+
+    <script src="./js/jquery.min.js" type="text/javascript"></script>
+
+    <script src="./js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="./js/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="./js/jquery.sticky.js"></script>
+    <script type="text/javascript" src="./js/sticky-header.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $(document).ready(function () {
+                $('#cssmenu ul ul li:odd').addClass('odd');
+                $('#cssmenu ul ul li:even').addClass('even');
+                $('#cssmenu > ul > li > a').click(function () {
+                    $('#cssmenu li').removeClass('active');
+                    $(this).closest('li').addClass('active');
+                    var checkElement = $(this).next();
+                    if ((checkElement.is('ul')) && (checkElement.is(':visible'))) {
+                        $(this).closest('li').removeClass('active');
+                        checkElement.slideUp('normal');
+                    }
+                    if ((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
+                        $('#cssmenu ul ul:visible').slideUp('normal');
+                        checkElement.slideDown('normal');
+                    }
+                    if ($(this).closest('li').find('ul').children().length == 0) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+            });
+        })(jQuery);
+
+    </script>
+
+</body>
+
+</html>

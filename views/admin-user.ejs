@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>User</title>
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="/css/admin.css">
+<script src="/js/admin.js"></script>
+  </head>
+  <body>
+    <%- include('admin-navbar'); -%>
+    <!-- breadcum -->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+      <li class="breadcrumb-item"><a href="#">User</a></li>
+    </ol>
+    <div class="container-fluid">
+        <div class="mb-3 mt-3">
+          <h1 class="d-inline">User</h1>
+          <a href="/admin/user/create" class="btn btn-primary">New</a>   
+        </div>
+        <table class="table" id="table1">
+          <thead>
+            <tr>
+              <th scope="col">STT</th>
+              <th scope="col">Name</th>
+              <th scope="col">User Name</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(var i=0;i<users.length;i++){ %>
+              <tr>
+                  <td><%= i+1 %></td>
+                  <td ><%= users[i].name%></td>
+                  <td><%= users[i].username%></td>
+                  <td scope="col"><%= users[i].phone%></td>
+                  <td scope="col"> <a href="/admin/user/delete/<%=users[i].id%>" class="btn btn-primary">Delete</a> </td>
+              </tr>
+          <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div> 
+  </body>
+</html>

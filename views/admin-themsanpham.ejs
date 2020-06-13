@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Thêm sản phẩm</title>
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="/css/admin.css">
+<script src="/js/admin.js"></script>
+</head>
+  <body>
+    <%- include('admin-navbar'); -%>
+    <!-- breadcum -->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+      <li class="breadcrumb-item"><a href="#">Thêm sản phẩm</a></li>
+  </ol>
+    <form action="" method="POST">
+      <div class="content">
+        <div class="cot1">
+            <label>Mã điện thoại</label>
+            <input type="" class="form-control" name="phone_id">
+            <label>Mã danh mục</label>
+            <input type="text" class="form-control" name="danh_muc_id">
+            <label>Tên sản phẩm</label>
+            <input type="text" class="form-control" name="name">
+            <label>Giá sản phẩm(VND)</label>
+            <input type="number" class="form-control" name="gia">
+            <label>Ảnh sản phẩm</label>
+            <input type="text" class="form-control" name="hinh_anh"> 
+            <label>CPU</label>
+            <input type="text" class="form-control" name="cpu">
+        </div>
+          <div class="cot2">
+            <label>RAM</label>
+            <input type="text" class="form-control" name="ram">
+            <label>Màn hình</label>
+            <input type="text" class="form-control" name="man_hinh">
+            <label>Hệ điều hành</label>
+            <input type="text" class="form-control" name="he_dieu_hanh">
+            <label>Bộ nhớ trong</label>
+            <input type="text" class="form-control" name="bo_nho_trong">
+            <label>Hãng sản xuất</label>
+            <select class="form-control" name="brand">
+              <option>Apple</option>
+              <option>Samsung</option>
+              <option>Xiaomi</option>
+              <option>Huawei</option>
+            </select>
+            <label>Thẻ sim</label>
+            <input type="text" class="form-control" name="the_sim">
+          </div>
+        <div class="cot3">
+          <label>Dung lượng pin</label>
+          <input type="text" class="form-control" name="dung_luong_pin">
+          <label>Số lượng</label>
+          <input type="number" class="form-control" name="so_luong">
+          <label>Camera trước</label>
+          <input type="text" class="form-control" name="camera_truoc">
+          <label>Camera sau</label>
+          <input type="text" class="form-control" name="camera_sau">
+          <label>Promotion</label>
+          <input type="text" class="form-control" name="promotion">
+        </div>   
+      </div>
+      <button class="btn btn-success mt-5 mb-5 ml-2" type="submit">Thêm sản phẩm</button>
+    </form>
+    
+  </body>
+</html>

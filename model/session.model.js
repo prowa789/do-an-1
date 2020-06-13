@@ -10,6 +10,7 @@ var sessionSchema = new mongoose.Schema({
             description : String,
             numberOfItem : Number
         }
+        
     ],
     totalProduct : {
         type: Number,
