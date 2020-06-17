@@ -1,4 +1,3 @@
-var Session = require('../model/session.model');
 var Dienthoai = require('../model/dienthoai.model');
 var Binhluan = require('../model/binhluan.model');
 
@@ -8,9 +7,7 @@ module.exports.index = async function (req, res) {
         res.redirect('/');
         return;
     }
-    var page = req.query.page; //page lhttp://www.nettruyen.com/?page=2
-    page = parseInt(page);
-    if (!page) { page = 1 }
+    var page = parseInt(req.query.page) || 1; //http://www.nettruyen.com/?page=2
     var itemPerPage = 8;
     var start = itemPerPage * (page - 1)
     var end = itemPerPage * page;
@@ -44,10 +41,10 @@ module.exports.comment_post = async function (req, res) {
             ho_ten: req.body.ho_ten,
             noi_dung: req.body.noi_dung,
             email: req.body.email,
-            sdt: req.body.sdt
+            sdt: req.body.sdt,
+            ngay_gio: new Date()
         });
         binhluan.save();
-        console.log(binhluan);
         res.redirect('/dienthoai/' + phone_id);
     })
 

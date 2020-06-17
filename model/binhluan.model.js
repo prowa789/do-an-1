@@ -3,10 +3,7 @@ var mongoose =require('mongoose');
 var binhluanSchema = new mongoose.Schema({
     id_sp :String,
     ho_ten :String,
-    ngay_gio : {
-        type: Date,
-        default : Date.now()
-    },
+    ngay_gio : Date,
     noi_dung:String,
     email:String,
     sdt:String,

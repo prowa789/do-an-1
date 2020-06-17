@@ -31,32 +31,32 @@
       <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
       <li class="breadcrumb-item"><a href="#">Chi tiết đơn hàng</a></li>
   </ol>
-    <div class="container-fluid">
+    <div class="container">
         <div class="mb-3 mt-3">
           <h1 style="font-size: 39px;">Chi tiết đơn hàng</h1>
         </div>
-        <h3>Thông tin người mua</h2>
+        <h3>Thông tin khách hàng</h2>
         <table class="table" style="background-color: #bdc3c7;border: 1px black solid;">
           <tbody>
              <tr>
-                <td style="padding-left: 3rem;font-weight: bold;">Người mua</td>
-                <td>Lê Tuấn Anh</td>
+                <td style="padding-left: 3rem;font-weight: bold;">Họ và tên</td>
+                <td><%=donhang.ttkh.ho_ten %></td>
              </tr>
              <tr>
                 <td style="padding-left: 3rem;font-weight: bold;">Email</td>
-                <td>asacnuoc@gmail.com</td>
+                <td><%=donhang.ttkh.email %></td>
              </tr>
              <tr>
                 <td style="padding-left: 3rem;font-weight: bold;">SĐT</td>
-                <td>0825050178</td>
+                <td><%=donhang.ttkh.sdt %></td>
              </tr>
              <tr>
                 <td style="padding-left: 3rem;font-weight: bold;">Địa chỉ</td>
-                <td>Số nhà 34, ngách 62, ngõ 203 Kim Ngưu</td>
+                <td><%=donhang.dia_chi_nhan_hang %></td>
              </tr>
           </tbody>
         </table>
-        <h3>Sản phẩm đặt</h3>
+        <h3>Sản phẩm đặt(<%= donhang.tong_san_pham %> sản phẩm)</h3>
         <table class="table">
           <thead>
             <tr>
@@ -69,17 +69,19 @@
             </tr>
           </thead>
           <tbody>
+            <% for(var i=0;i<donhang.san_pham.length;i++){ %>
             <tr>
-              <td>DT001</td>
-              <td>Iphone X</td>
-              <td><img src="https://cdn.tgdd.vn/Products/Images/42/200533/iphone-11-pro-max-green-400x400.jpg" alt="" style="width: 50px;"></td>
-              <td>1</td>
-              <td>300</td>
-              <td>300</td>
+              <td><%= donhang.san_pham[i].phone_id %></td>
+              <td><%= donhang.san_pham[i].name %></td>
+              <td><img src="<%= donhang.san_pham[i].hinh_anh %>" alt="" style="width: 50px;"></td>
+              <td><%= donhang.san_pham[i].so_luong %></td>
+              <td><%= donhang.san_pham[i].gia_hien_thi %></td>
+              <td>tý làm</td>
             </tr>
+            <% } %>
           </tbody>
         </table>
-        <p style="float: right;font-weight: 500;font-size:30px;color: red;" class="mb-5">Tổng tiền :500000đ</p>
+        <p style="float: right;font-weight: 500;font-size:30px;color: black;" class="mb-5">Tổng tiền :<%= donhang.tong_tien %>  đ</p>
       </div>
     </div>
   </body>

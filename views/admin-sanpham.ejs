@@ -25,7 +25,7 @@
     <!-- breadcum -->
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-      <li class="breadcrumb-item"><a href="#">Xem sản phẩm</a></li>
+      <li class="breadcrumb-item"><a href="#">Sản phẩm</a></li>
   </ol>
     <div class="container-fluid">
         <div class="mb-3 mt-3">
@@ -40,22 +40,21 @@
               <th scope="col">Hình ảnh</th>
               <th scope="col">Thương hiệu</th>
               <th scope="col">Số lượng</th>
-              <th scope="col">Giá tiền/chiếc</th>
+              <th scope="col">Giá tiền</th>
               <th scope="col">Chức năng</th>
             </tr>
           </thead>
           <tbody>
             <% for(var i=0;i<dienthoai.length;i++){ %>
             <tr>
-              <th scope="row"><%= dienthoai[i].name %></th>
+              <td scope="row"><%= dienthoai[i].name %></td>
               <td><img src="<%= dienthoai[i].hinh_anh %>" alt="" style="width: 50px";></td>
               <td><%= dienthoai[i].brand %></td>
               <td><%= dienthoai[i].so_luong %></td>
-              <td><%= dienthoai[i].gia %> VNĐ</td>
+              <td><%= dienthoai[i].gia_hien_thi %></td>
               <td>
-                <a href="/sanpham/chitiet" class="btn btn-success">Xem</a>
-                <a href="/sanpham/xoa/<%= dienthoai[i].phone_id %>" class="btn btn-danger">Xóa</a>
-                <a href="/sanpham/sua/<%= dienthoai[i].phone_id %>" class="btn btn-dark">Sửa</a>
+                <a href="/admin/sanpham/xoa/<%= dienthoai[i].phone_id %>" class="btn btn-danger">Xóa</a>
+                <a href="/admin/sanpham/sua/<%= dienthoai[i].phone_id %>" class="btn btn-dark">Sửa</a>
               </td>       
             </tr>
             <% } %>

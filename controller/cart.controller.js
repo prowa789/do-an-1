@@ -1,75 +1,132 @@
-var Session = require('../model/session.model')
-var Product =require('../model/dienthoai.model');
-const User = require('../model/user.model');
+var Session = require('../model/session.model');
+var Dienthoai = require('../model/dienthoai.model');
+var Donhang = require('../model/donhang.model');
 
-module.exports.cartAdd = async function(req,res){
-    var productId=req.params.productId;
-    var sessionId=req.signedCookies.sessionId;
-    if(!sessionId){
-        res.redirect('/product'); 
+module.exports.add = async function (req, res) {
+    var phone_id = req.params.phone_id;
+    var sessionId = req.signedCookies.sessionId;
+    if (!sessionId) {
+        res.redirect('/');
         return;
     }
-    var product = await Product.findById(productId);
-    Session.findOneAndUpdate({ _id: sessionId },{ $inc: { totalProduct: 1 } },{new:true},function(err,doc){
-        for (let i = 0; i < doc.cart.length; i++) {
-            if (doc.cart[i].productId == productId) {
-              doc.cart[i].numberOfItem ++;
-              doc.save();
-              return;
-            }
+    var dienthoai = await Dienthoai.findOne({ phone_id: phone_id });
+    var session = await Session.findOne({ _id: sessionId });
+    session.tong_san_pham++;
+    session.tong_tien += dienthoai.gia;
+    for (var i = 0; i < session.gio_hang.length; i++) {
+        if (session.gio_hang[i].phone_id == phone_id) {
+            session.gio_hang[i].so_luong++;
+            session.save();
+            res.redirect('/giohang');
+            return;
         }
-        var item={
-            productId :productId,
-            name : product.name,
-            avatar: product.avatar,
-            price : product.price,
-            promotion: product.promotion,
-            numberOfItem: 1,
-        }
-        doc.cart.push(item);
-        doc.save();
-    })
-    res.redirect('/cart'); 
+    }
+    var item = {
+        phone_id: dienthoai.phone_id,
+        name: dienthoai.name,
+        hinh_anh: dienthoai.hinh_anh,
+        gia: dienthoai.gia,
+        gia_hien_thi: dienthoai.gia_hien_thi,
+        promotion: dienthoai.promotion,
+        so_luong: 1
+    }
+    session.gio_hang.push(item);
+    session.save();
+    res.redirect('/giohang');
 }
-module.exports.cart = function(req,res){
+
+module.exports.show = async function (req, res) {
     var sessionId = req.signedCookies.sessionId;
     //code in here
-    Session.findById(sessionId,function(err,doc){
-        var sum= sum? sum:0;
-        for(var i=0;i<doc.cart.length;i++){
-            sum += doc.cart[i].price*doc.cart[i].numberOfItem;
-        }
-        res.render('cart',{
-            product:doc.cart,
-            sum:sum
-        });
-    })
+    var session = await Session.findOne({ _id: sessionId });
+    var tong_tien = convertMoney(session.tong_tien);
+    res.render('cart', { session: session,tong_tien:tong_tien });
 }
-module.exports.cartSubstract = async function(req,res){
-    var productId=req.params.productId;
-    var sessionId=req.signedCookies.sessionId;
-    if(!sessionId){
-        res.redirect('/product'); 
+module.exports.dathang_post = async function (req, res) {
+    var sessionId = req.signedCookies.sessionId;
+    var session = await Session.findOne({ _id: sessionId });
+    var donhang = new Donhang({
+        ttkh :{
+            ho_ten: req.body.ho_ten,
+            email: req.body.email,
+            sdt : req.body.sdt
+        },
+        tong_tien: session.tong_tien,
+        tong_san_pham: session.tong_san_pham,
+        san_pham:session.gio_hang,
+        dia_chi_nhan_hang:req.body.dia_chi_nhan_hang,
+        trang_thai: "chờ xử lý"
+    })
+    donhang.save();
+    // clear giỏ hàng
+    session.tong_tien =0;
+    session.tong_san_pham =0;
+    session.gio_hang = [];
+    session.save();
+    res.render('order-success');
+}
+
+module.exports.substract= async function (req, res) {
+    var phone_id = req.params.phone_id;
+    var sessionId = req.signedCookies.sessionId;
+    if (!sessionId) {
+        res.redirect('/');
         return;
     }
-    Session.findById({ _id: sessionId },function(err,doc){
-        if(doc.totalProduct>0){
-            doc.totalProduct--;
-        }
-        for (let i = 0; i < doc.cart.length; i++) {
-            if (doc.cart[i].productId == productId) {
-                if(doc.cart[i].numberOfItem>0){
-                    doc.cart[i].numberOfItem --;
-                    doc.save();
-                }
-                else{
-                    doc.cart.pop(doc.cart[i]);
-                    doc.save();
-                }
-                return;
+    var dienthoai = await Dienthoai.findOne({ phone_id: phone_id });
+    var session = await Session.findOne({ _id: sessionId });
+    session.tong_san_pham--;
+    session.tong_tien -= dienthoai.gia;
+    for (var i = 0; i < session.gio_hang.length; i++) {
+        if (session.gio_hang[i].phone_id == phone_id) {
+            session.gio_hang[i].so_luong--;
+            if(session.gio_hang[i].so_luong==0){
+                session.gio_hang.pop(session.gio_hang[i]);
             }
+            session.save();
+            res.redirect('/giohang');
+            return;
         }
-        doc.save();
-    });
-    res.redirect('/cart'); 
+    }
+    res.redirect('/giohang');
+}
+module.exports.remove = async function (req, res) {
+    var phone_id = req.params.phone_id;
+    var sessionId = req.signedCookies.sessionId;
+    if (!sessionId) {
+        res.redirect('/');
+        return;
+    }
+    var dienthoai = await Dienthoai.find({ phone_id: phone_id });
+    var session = await Session.findOne({ _id: sessionId });
+    
+    for (var i = 0; i < session.gio_hang.length; i++) {
+        if (session.gio_hang[i].phone_id == phone_id) {
+            session.tong_tien-=session.gio_hang[i].gia*session.gio_hang[i].so_luong;
+            session.tong_san_pham -=session.gio_hang[i].so_luong;
+            session.gio_hang.pop(session.gio_hang[i]);
+            session.save();
+            res.redirect('/giohang');
+            return;
+        }
+    }
+}
+
+function convertMoney(money){
+    var string="";
+    var chuoi_ban_dau = money.toString();
+    var len = money.toString().length;
+    var k=len%3;
+    len =len/3-1;
+    var temp = chuoi_ban_dau.slice(0,k);
+    string+=temp;
+    for(var i=0;i<len;i++){
+        if(k!=0){
+            string+=".";
+        }
+        temp =chuoi_ban_dau.slice(k,k+3)
+        string+=temp;
+        k+=3;
+    }
+    return string;
 }

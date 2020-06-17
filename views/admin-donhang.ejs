@@ -22,7 +22,7 @@
     <!-- breadcum -->
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-      <li class="breadcrumb-item"><a href="#">Xem sản phẩm</a></li>
+      <li class="breadcrumb-item"><a href="#">Đơn hàng</a></li>
   </ol>
     <div class="container-fluid">
         <div class="mb-3 mt-3">
@@ -33,24 +33,27 @@
           <thead>
             <tr>
               <th scope="col">STT</th>
-              <th scope="col">Mã đơn hàng</th>
-              <th scope="col">Người đặt</th>
-              <th scope="col">Trạng thái</th>
+              <th scope="col">Tên khách hàng</th>
+              <th scope="col">SĐT</th>
+              <th scope="col">Email</th>
+              <th scope="col">Trạng thái đơn hàng</th>
               <th scope="col">Chức năng</th>
             </tr>
           </thead>
           <tbody>
+            <% for(var i=0;i<donhang.length;i++){ %>
             <tr>
               <td>1</td>
-              <td>DH001</td>
-              <td>Lê Tuấn Anh</td>
-              <td>Đơn hàng mới</td>
+              <td><%= donhang[i].ttkh.ho_ten %></td>
+              <td><%= donhang[i].ttkh.sdt %></td>
+              <td><%= donhang[i].ttkh.email %></td>
+              <td><%= donhang[i].trang_thai %></td>
               <td>
-                <a href="/admin/donhang/chitiet" class="btn btn-success">Xem</a>
-                <a href="" class="btn btn-danger">Xóa</a>
-                <a href="" class="btn btn-dark">Sửa</a>
+                <a href="/admin/donhang/chitiet/<%= donhang[i]._id %>" class="btn btn-success">Chi tiết đơn</a>
+                <a href="" class="btn btn-danger">Huỷ đơn</a>
               </td>
             </tr>
+            <% } %>
           </tbody>
         </table>
       </div>

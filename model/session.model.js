@@ -1,24 +1,21 @@
 var mongoose =require('mongoose');
 
 var sessionSchema = new mongoose.Schema({
-    cart : [
+    tong_tien: Number,
+    tong_san_pham: Number,
+    gio_hang:[
         {
-            productId : String,
+            phone_id :String,
             name : String,
-            price : Number,
-            image : String,
-            description : String,
-            numberOfItem : Number
+            hinh_anh: String,
+            gia : Number,
+            gia_hien_thi :String,
+            promotion: String,
+            so_luong: Number
         }
-        
-    ],
-    totalProduct : {
-        type: Number,
-        default : 0
-    }
+    ]
 })
 
-var Session =mongoose.model('Session',sessionSchema,'session');
+var session = mongoose.model('Session',sessionSchema,'session');
 // tham so 3 la ten bang trong database
-
-module.exports = Session;
+module.exports = session;

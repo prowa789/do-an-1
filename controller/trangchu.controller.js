@@ -1,4 +1,3 @@
-var Session =require('../model/session.model');
 var Dienthoai = require('../model/dienthoai.model');
 
 module.exports.show = async function(req,res){

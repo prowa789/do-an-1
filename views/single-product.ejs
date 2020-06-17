@@ -43,19 +43,12 @@
                     <%=dienthoai[0].name%>
                 </h3>
                 <div class="gia-tien">
-                    <%=dienthoai[0].gia%> VNĐ
+                    <%=dienthoai[0].gia_hien_thi%>
                 </div>
-                <form action="">
-                    <div class="so-luong">
-                        <div style="margin-bottom:15px">Số lượng</div>
-                        <input class="form-control" type="number" name="so_luong" value="1">
-                    </div>
-                    <div class="promotion">
-                        <small><%=dienthoai[0].promotion%>
-                        </small>
-                    </div>
-                    <a href="" class="btn btn-success">Thêm vào giỏ hàng</a>
-                </form>
+                <div class="promotion">
+                    <small><%=dienthoai[0].promotion%></small>
+                </div>
+                <a href="/giohang/add/<%=dienthoai[0].phone_id%>" class="btn btn-success">Thêm vào giỏ hàng</a>
             </div>
         </div>
         <div class="row">
@@ -106,42 +99,62 @@
             </div>
         </div>
         <div class="row binhluan">
-            <h3>Bình luận</h3>
+            <h3>Leave a reply</h3>
             <form action="/dienthoai/<%= dienthoai[0].phone_id%> " method="POST">
-                <div class="form-group" style="margin-left:20px">
-                    <label for="">Họ tên</label>
-                    <input type="text" class="form-control-sm" name="ho_ten">
-                    <label for="">Email</label>
-                    <input type="text" class="form-control-sm" name="email">
-                    <label for="">SĐT</label>
-                    <input type="text" class="form-control-sm" name="sdt">
+                <div class="form-group">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label for="">Họ tên</label>
+                                <input type="text" class="form-control input-bl" name="ho_ten" required>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="">Email</label>
+                                <input type="email" class="form-control input-bl" name="email" required>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="">SĐT</label>
+                                <input type="text" class="form-control input-bl" name="sdt" required>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="">Viết bình luận</label>
+                                <textarea style="display:block;margin-bottom:20px" class="form-control" name="noi_dung" rows="5" cols="" required></textarea>
+                                <button type="submit" class="btn btn-success" style="margin-bottom:20px">Gửi</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div style="margin-left: 20px;">
-                    <label for="">Viết bình luận</label>
-                    <textarea style="display:block;margin-bottom:20px" name="noi_dung" rows="4" cols="50"></textarea>
-                    <button type="submit" class="btn btn-success" style="margin-bottom:20px">Gửi</button>
-                </div>  
             </form>
         </div>
-        <div class="danhgia" style="color: black;margin-bottom: 50px;">
-            <h3 style="border-bottom:1px solid black;">Đánh giá</h3>
-            <% if(binhluan){ %>
-            <% for(var i=0;i<binhluan.length;i++){ %>
-            <div class="mot_danh_gia">
-                <div class="ten" style="font-weight: 600;">
-                   
-                    <%=binhluan[i].ho_ten%>
-                    
-                </div>
-                <div class="noi_dung">- 
-                    <%=binhluan[i].noi_dung%>
+        <div class="row" style="color: black;margin-bottom: 20px;">
+            <h3 style="border-bottom:1px solid black;padding-left: 20px;">Đánh giá</h3>
+        </div>
+        <% if(binhluan){ %>
+        <% for(var i=0;i<binhluan.length;i++){ %>
+        <div class="row danhgia">
+            <div class="col-sm-12 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong><%= binhluan[i].ho_ten %></strong>
+                        <span class="text-muted">
+                            &#160
+                            <%= binhluan[i].ngay_gio.getHours() %> :
+                            <%= binhluan[i].ngay_gio.getMinutes() %>&#160 -
+                            <%= binhluan[i].ngay_gio.getDate() %> /
+                            <%= binhluan[i].ngay_gio.getMonth() + 1%> /
+                            <%= binhluan[i].ngay_gio.getFullYear()%>
+                        </span>
+                    </div>
+                    <div class="panel-body">
+                        <%= binhluan[i].noi_dung %>
+                    </div>
                 </div>
             </div>
-            <% } %>
-            <% } %>
         </div>
+        <% } %>
+        <% } %>
     </div>
-
+    </div>
     <!-- footer -->
     <%- include('footer'); -%>
     <!-- end footer -->

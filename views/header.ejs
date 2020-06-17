@@ -17,31 +17,27 @@
 <div class="header">
     <div class="container">
         <div class="row">
-
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-8">
                 <div class="logo">
                     <a href="/"><img src="/images/logo.png" alt=""> </a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <div class="search-bg">
-                    <input type="text" class="form-control" placeholder="Search Here" id="search-input" data-active="true">
-                    <button type="Submit"><i class="fa fa-search"></i></button>
-                </div>
+                <form action="/search" method="GET">
+                    <div class="search-bg">
+                        <input type="text" class="form-control" placeholder="Tìm theo tên sản phẩm và thương hiệu"
+                            id="search-input" name="q">
+                        <button type="Submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                <div class="account-section" id="account-section">
-                    <ul>
-                        <li><a href="/account" class="title hidden-xs">Tài khoản</a></li>
-                        <li class="hidden-xs">|</li>
-                        <li><a href="/register" class="title hidden-xs">Đăng kí</a></li>
-                    </ul>
-                </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 hidden-xs text-center">
+                <a href="/giohang"><i class="fa fa-shopping-cart" style="color: #0cafe5;font-size: 60px;"></i></a>
             </div>
 
         </div>
     </div>
-
     <div class="navigation">
         <div class="container">
             <div class="row">
@@ -52,7 +48,6 @@
                             <li class="active"><a href="/dienthoai">Điện thoại</a></li>
                             <li class="active"><a href="/laptop">Laptop</a></li>
                             <li class="active"><a href="/tablet">Tablet</a></li>
-                            <li class="active"><a href="/cart">Giỏ hàng</a></li>
                             <li class="active"><a href="/phu_kien">Phụ kiện</a></li>
                         </ul>
                     </div>

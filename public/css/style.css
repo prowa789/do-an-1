@@ -164,7 +164,6 @@ label {}
     line-height: 1.42857143;
     border: 2px solid #e8ecf0;
     background-color: #fff;
-    text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 10px;
     -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075);
@@ -1001,7 +1000,7 @@ img {
     font-size: 14px;
     position: absolute;
     right: 0px;
-    padding: 16px 22px;
+    padding: 11px 22px;
     bottom: 0;
 }
 
@@ -3494,7 +3493,7 @@ a.checkout-btn{
         width: 100%;
     }
     table#cart tbody td .form-control { 
-    width: 20%;
+    /* width: 20%; */
     display: inline !important;
     } 
      
@@ -3541,22 +3540,6 @@ a.checkout-btn{
     }   
 /* end gio hang */
 
-/* show san pham */
-/* .thumnail{
-    margin-top: 2rem;
-}
-.thumnail .thumnail-item img{
-    cursor: pointer;
-    padding: 10px;
-    border:1px rgb(196, 194, 194) solid;
-    box-sizing: content-box;
-}
-.thumnail .thumnail-item{
-    margin:auto;
-    display:flex ;
-justify-content:center;
-align-items:center; }*/
-
 img{width: 80%;margin:auto;}
 .info-san-pham{
     padding-top: 3rem;
@@ -3571,14 +3554,7 @@ img{width: 80%;margin:auto;}
     margin:20px 0 10px 0;
     color: red;
 }
-.info-san-pham .so-luong{
-    padding:10px 0 10px 0;
-}
-.info-san-pham input{
-    display: inline;
-    width: fit-content;
-    font-size: 15px;
-}
+
 .info-san-pham .btn-success{
     padding: 20px;
     margin-top: 20px;
@@ -3593,15 +3569,10 @@ img{width: 80%;margin:auto;}
     padding-left: 3rem; 
     width: 15%;
 }
+/* binhluan */
 .binhluan h3{
     padding:10px 0 10px 30px;
     background-color: #0cafe5;
     color: white;
 }
-
-@media screen and (max-width: 600px) {
-    .chi-tiet-san-pham .cot1{
-        width: auto;
-    }
-}
-/* end show san pham */
+.binhluan .input-bl{height: 40px;}

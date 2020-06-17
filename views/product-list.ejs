@@ -10,13 +10,13 @@
     <meta name="keywords" content="">
     <title>Điện thoại</title>
 
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="./css/style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
 
-    <link href="./css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="/images/favicon.ico">
 </head>
 
@@ -41,146 +41,120 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                     <!-- sidenav-section -->
-                    <div id='cssmenu'>
-                        <ul>
-                            <li class='has-sub'><a href='#'>Thương hiệu</a>
-                                <ul>
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" class="checkedbrand" data-brand="samsung">
-                                            <span class="checkbox-list">Samsung
-                                        </label>
-
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" class="checkedbrand" data-brand="apple">
-                                            <span class="checkbox-list">Apple</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" class="checkedbrand" data-brand="htc">
-                                            <span class="checkbox-list">HTC</span>
-                                        </label>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" class="checkedbrand" data-brand="huawei">
-                                            <span class="checkbox-list">Huawei</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" class="checkedbrand" data-brand="vivo">
-                                            <span class="checkbox-list">Vivo</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" class="checkedbrand" data-brand="oppo">
-                                            <span class="checkbox-list">OPPO</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" class="checkedbrand" data-brand="nokia">
-                                            <span class="checkbox-list">Nokia</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" class="checkedbrand" data-brand="sony">
-                                            <span class="checkbox-list">Sony</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" class="checkedbrand" data-brand="coolpad">
-                                            <span class="checkbox-list">Coolpad</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" class="checkedbrand" data-brand="mobell">
-                                            <span class="checkbox-list">Mobell</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" class="checkedbrand" data-brand="itel">
-                                            <span class="checkbox-list">Itel</span>
-                                        </label>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class='has-sub'><a href='#'>Giá</a>
-                                <ul>
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" class="checkedprice" data-price="1">
-                                            <span class="checkbox-list">Dưới 1tr</span>
-                                        </label>
-                                    </li>
-                                    <li><span>
+                    <form action="/search/filter" method="GET">
+                        <div id='cssmenu'>
+                            <ul>
+                                <li class='has-sub'><a href='#'>Thương hiệu</a>
+                                    <ul>
+                                        <li>
                                             <label>
-                                                <input type="checkbox" class="checkedprice" data-price="0104">
-                                                <span class="checkbox-list">1tr - 4tr</span>
+                                                <input type="checkbox" class="checkedbrand" name="brand[]"
+                                                    value="samsung">
+                                                <span class="checkbox-list">Samsung
                                             </label>
-                                    </li>
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" class="checkedprice" data-price="0410">
-                                            <span class="checkbox-list">4tr - 10tr</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" class="checkedprice" data-price="1015">
-                                            <span class="checkbox-list">10tr - 15tr</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" class="checkedprice" data-price="1525">
-                                            <span class="checkbox-list">15tr - 25tr</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" class="checkedprice" data-price="25">
-                                            <span class="checkbox-list">Trên 25tr</span>
-                                        </label>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <button type="button" class="btn btn-success btn-block"
-                                    id="btn-filter">OK</button>
-                            </li>
-                        </ul>
-                    </div>
+
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="checkbox" class="checkedbrand" name="brand[]"
+                                                    value="apple">
+                                                <span class="checkbox-list">Apple</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="checkbox" class="checkedbrand" name="brand[]"
+                                                    value="huawei">
+                                                <span class="checkbox-list">Huawei</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="checkbox" class="checkedbrand" name="brand[]"
+                                                    value="xiaomi">
+                                                <span class="checkbox-list">Xiaomi</span>
+                                            </label>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li class='has-sub'><a href='#'>Giá</a>
+                                    <ul>
+                                        <li>
+                                            <label>
+                                                <input type="checkbox" class="checkedprice" name="gia" value="1">
+                                                <span class="checkbox-list">Dưới 1tr</span>
+                                            </label>
+                                        </li>
+                                        <li><span>
+                                                <label>
+                                                    <input type="checkbox" class="checkedprice" name="gia" value="0104">
+                                                    <span class="checkbox-list">1tr - 4tr</span>
+                                                </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="checkbox" class="checkedprice" name="gia" value="0410">
+                                                <span class="checkbox-list">4tr - 10tr</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="checkbox" class="checkedprice" name="gia" value="1015">
+                                                <span class="checkbox-list">10tr - 15tr</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="checkbox" class="checkedprice" name="gia" value="1525">
+                                                <span class="checkbox-list">15tr - 25tr</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="checkbox" class="checkedprice" name="gia" value="25">
+                                                <span class="checkbox-list">Trên 25tr</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <button type="submit" class="btn btn-success btn-block" id="btn-filter">OK</button>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </form>
 
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                     <div class="row">
-                        <% for(var i=0;i<dienthoai.length;i++){ %>
-                        <a href="/dienthoai/<%=dienthoai[i].phone_id%>" class="col-sm-3 col-xs-6" style="margin-bottom:20px;height: 350px;">
+                        <% if(locals.wrongs){ %>
+                        <% for(var i = 0;i < locals.wrongs.length;i++){ %>   
+                        <p style="color: red;font-size: 20px;">
+                            <%= locals.wrongs[i] %>
+                        </p>
+                        <% } %>
+                        <% } %>
+                        <% if(locals.dienthoai){ %>
+                        <% for(var i=0;i<locals.dienthoai.length;i++){ %>
+                        <a href="/dienthoai/<%=locals.dienthoai[i].phone_id%>" class="col-sm-3 col-xs-6"
+                            style="margin-bottom:20px;height: 350px;">
                             <div class="hinhanh" style="height:180px;">
-                                <img class="card-img-top" src="<%=dienthoai[i].hinh_anh%>" alt="Card image cap"
+                                <img class="card-img-top" src="<%=locals.dienthoai[i].hinh_anh%>" alt="Card image cap"
                                     style="width: 150px;">
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title" style="font-size: 20px;font-weight: 500;">
-                                    <%=dienthoai[i].name%></h5>
+                                    <%=locals.dienthoai[i].name%></h5>
                                 <p class="card-text" style="color:red;font-weight: 500;margin-top: -5px;">
-                                    <%=dienthoai[i].gia%> VNĐ</p>
+                                    <%=locals.dienthoai[i].gia_hien_thi%></p>
                                 <p class="card-text" style="overflow:hidden;font-size:15px;color:blue;margin-top:-20px">
-                                    <%=dienthoai[i].promotion%></p>
+                                    <%=locals.dienthoai[i].promotion%></p>
                             </div>
                         </a>
+                        <% } %>
                         <% } %>
                     </div>
                     <%- include('page-bar'); -%>
@@ -191,12 +165,12 @@
     </div>
     <%- include('footer'); -%>
 
-    <script src="./js/jquery.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.min.js" type="text/javascript"></script>
 
-    <script src="./js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="./js/menumaker.js" type="text/javascript"></script>
-    <script type="text/javascript" src="./js/jquery.sticky.js"></script>
-    <script type="text/javascript" src="./js/sticky-header.js"></script>
+    <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/js/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/js/sticky-header.js"></script>
     <script type="text/javascript">
         (function ($) {
             $(document).ready(function () {

@@ -15,14 +15,18 @@ route.get('/sanpham',authMid.authMiddleware, controller.sanpham);
 route.get('/sanpham/them',authMid.authMiddleware, controller.themsanpham);
 route.post('/sanpham/them',authMid.authMiddleware, controller.themsanpham_post);
 route.get('/sanpham/xoa/:id',authMid.authMiddleware, controller.xoasanpham);
+route.get('/sanpham/sua/:id',authMid.authMiddleware, controller.suasanpham);
+route.post('/sanpham/sua/:id',authMid.authMiddleware, controller.suasanpham_post);
 //danh muc
 route.get('/danhmuc',authMid.authMiddleware, controller.danhmuc);
 route.get('/danhmuc/them',authMid.authMiddleware, controller.themdanhmuc);
 route.post('/danhmuc/them',authMid.authMiddleware, controller.themdanhmuc_post);
 route.get('/danhmuc/xoa/:id',authMid.authMiddleware, controller.xoadanhmuc);
+route.get('/danhmuc/sua/:id',authMid.authMiddleware, controller.suadanhmuc);
+route.post('/danhmuc/sua/:id',authMid.authMiddleware, controller.suadanhmuc_post);
 //don hang
 route.get('/donhang',authMid.authMiddleware, controller.donhang);
-route.get('/donhang/chitiet',authMid.authMiddleware, controller.chitietdonhang);
+route.get('/donhang/chitiet/:id',authMid.authMiddleware, controller.chitietdonhang);
 
 route.get('/user/doimatkhau',authMid.authMiddleware,controller.doimatkhau);
 route.post('/user/doimatkhau',authMid.authMiddleware,controller.doimatkhau_post);

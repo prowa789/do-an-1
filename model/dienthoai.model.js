@@ -2,9 +2,10 @@ var mongoose =require('mongoose');
 
 var dienthoaiSchema = new mongoose.Schema({
     phone_id :String,
-    danhmuc_id: String,
+    danh_muc_id: String,
     name : String,
     gia: Number,
+    gia_hien_thi:String,
     hinh_anh :String,
     so_luong :Number,
     cpu : String,
