@@ -3485,15 +3485,10 @@ a.checkout-btn{
 /* giỏ hàng*/
 @media screen and (max-width: 600px) {
     .ten-san-pham{
-        color: black;
-        font-weight: 700;
-        line-height: 40px;
-    }
-    .thanhtoan{
-        width: 100%;
+        color: white;
+        font-weight: 500;
     }
     table#cart tbody td .form-control { 
-    /* width: 20%; */
     display: inline !important;
     } 
      
