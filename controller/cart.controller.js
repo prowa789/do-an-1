@@ -2,6 +2,7 @@ var Dienthoai = require('../model/dienthoai.model');
 var Donhang = require('../model/donhang.model');
 
 module.exports.add = async function (req, res) {
+    console.log(req.session.cart);
     var phone_id = req.params.phone_id;
     var session = req.session.cart;
     if (!session) {
@@ -28,8 +29,6 @@ module.exports.add = async function (req, res) {
         so_luong: 1
     }
     session.gio_hang.push(item);
-    req.session.cart =session;
-    console.log(req.session.cart);
     res.redirect('/giohang');
 }
 
@@ -50,7 +49,7 @@ module.exports.dathang_post = async function (req, res) {
         return;
     }
     if(session.gio_hang.length==0){
-        res.redirect('/giohang')
+        res.redirect('/giohang');
         return;
     }
     var donhang = new Donhang({
@@ -67,11 +66,12 @@ module.exports.dathang_post = async function (req, res) {
     })
     donhang.save();
     // clear giỏ hàng
-    req.session.cart = {
+    session = {
         tong_tien: 0,
         tong_san_pham: 0,
         gio_hang:[]
     }
+    req.session.cart = session;
     res.render('order-success');
 }
 
@@ -95,7 +95,6 @@ module.exports.substract= async function (req, res) {
             return;
         }
     }
-    req.session.cart = session;
     res.redirect('/giohang');
 }
 module.exports.remove = async function (req, res) {
@@ -116,7 +115,6 @@ module.exports.remove = async function (req, res) {
             return;
         }
     }
-    req.session.cart = session;
 }
 
 function convertMoney(money){

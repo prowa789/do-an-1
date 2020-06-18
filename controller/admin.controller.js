@@ -1,9 +1,10 @@
 var User = require('../model/user.model');
+var nodemailer = require('nodemailer'); // khai báo sử dụng module nodemailer
 var Dienthoai = require('../model/dienthoai.model');
 var Donhang = require('../model/donhang.model');
 
 // admin
-module.exports.index = function (req, res) {    
+module.exports.index = function (req, res) {
     res.render('admin-dienthoai');
 }
 // user
@@ -109,11 +110,76 @@ module.exports.suadienthoai_post = function (req, res) {
 // Đơn hàng
 module.exports.donhang = async function (req, res) {
     var donhang = await Donhang.find({});
-    res.render('admin-donhang',{donhang:donhang});
+    res.render('admin-donhang', { donhang: donhang });
 }
 module.exports.chitietdonhang = async function (req, res) {
     var donhang_id = req.params.id;
-    var donhang = await Donhang.findOne({_id:donhang_id});
-    res.render('admin-xemdonhang',{donhang:donhang});
+    var donhang = await Donhang.findOne({ _id: donhang_id });
+    var tong_tien = convertMoney(donhang.tong_tien);
+    var thanh_tien = [];
+    for (var i = 0; i < donhang.san_pham.length; i++) {
+        thanh_tien.push(convertMoney(donhang.san_pham[i].gia * donhang.san_pham[i].so_luong));
+    }
+    res.render('admin-xemdonhang', {
+        donhang: donhang,
+        tong_tien: tong_tien,
+        thanh_tien: thanh_tien
+    });
 }
-
+module.exports.huydonhang = async function (req, res) {
+    var donhang_id = req.params.id;
+    var donhang = await Donhang.findByIdAndRemove({ _id: donhang_id });
+    res.redirect('/admin/donhang');
+}
+module.exports.xacnhandonhang = async function (req, res) {
+    var donhang_id = req.params.id;
+    var donhang = await Donhang.findOne({ _id: donhang_id });
+    // gửi mail
+    var html = "<p><span style=\"font-size: 20px;\">Đơn hàng của " + donhang.ttkh.ho_ten + " đã được xác nhận. Cảm ơn " + donhang.ttkh.ho_ten  + " đ&atilde; mua h&agrave;ng tr&ecirc;n web của ch&uacute;ng t&ocirc;i</span></p><p><span style=\"font-size: 20px;\">Chi tiết sản phẩm đ&atilde; mua :</span></p> <ul>";
+    for (var i = 0; i < donhang.san_pham.length; i++) {
+        html = html + '<li style=\"font-size: 16px;\">' + donhang.san_pham[i].name + ', số lượng : ' + donhang.san_pham[i].so_luong + '</li>';
+    }
+    html = html + '</ul>' + '<br><p style=\"font-size: 20px;\">Tổng tiền : ' + convertMoney(donhang.tong_tien) + 'đ </p>' + '<p style=\"font-size: 20px;\">Địa chỉ nhận hàng: ' + donhang.dia_chi_nhan_hang + '</p>';
+    var transporter = nodemailer.createTransport({ // config mail server
+        service: 'gmail',
+        auth: {
+            user: 'mobileshoppingcart123@gmail.com',
+            pass: 'tuoilolsanhvai'
+        }
+    });
+    var mainOptions = { // thiết lập đối tượng, nội dung gửi mail
+        from: 'Mobile Shopping',
+        to: donhang.ttkh.email,
+        subject: 'Đơn hàng từ Mobile Shopping',
+        html: html
+    }
+    transporter.sendMail(mainOptions, function (err, info) {
+        if (err) {
+            console.log(err);
+            res.send("email k tồn tại");
+            return;
+        } else {
+            console.log('Message sent: ' + info.response);
+            res.redirect('/admin/donhang/chitiet/' + donhang._id);
+        }
+    });
+    // xác nhận đơn hàng
+    donhang.trang_thai = "đã xác nhận";
+    donhang.save();
+}
+function convertMoney(money) {
+    var string = "";
+    var chuoi_ban_dau = money.toString();
+    var len = money.toString().length;
+    var k = len % 3;
+    if (k == 0) { len = len / 3 } else { len = len / 3 - 1 };
+    var temp = chuoi_ban_dau.slice(0, k);
+    string += temp;
+    for (var i = 0; i < len; i++) {
+        if (k != 0) { string += "."; }
+        temp = chuoi_ban_dau.slice(k, k + 3);
+        string += temp;
+        k += 3;
+    }
+    return string;
+}

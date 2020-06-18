@@ -33,7 +33,10 @@
   </ol>
     <div class="container">
         <div class="mb-3 mt-3">
-          <h1 style="font-size: 39px;">Chi tiết đơn hàng</h1>
+          <h1 style="font-size: 39px;display: inline;">Chi tiết đơn hàng</h1>
+          <% if(donhang.trang_thai=="đã xác nhận"){ %>
+            <button class="btn btn-warning mb-2" disabled>Đã xác nhận và gửi mail</button>
+          <% } %>
         </div>
         <h3>Thông tin khách hàng</h2>
         <table class="table" style="background-color: #bdc3c7;border: 1px black solid;">
@@ -76,12 +79,19 @@
               <td><img src="<%= donhang.san_pham[i].hinh_anh %>" alt="" style="width: 50px;"></td>
               <td><%= donhang.san_pham[i].so_luong %></td>
               <td><%= donhang.san_pham[i].gia_hien_thi %></td>
-              <td>tý làm</td>
+              <td><%= thanh_tien[i] %>đ</td>
             </tr>
             <% } %>
           </tbody>
         </table>
-        <p style="float: right;font-weight: 500;font-size:30px;color: black;" class="mb-5">Tổng tiền :<%= donhang.tong_tien %>  đ</p>
+        
+        <p style="float: right;font-weight: 500;font-size:30px;color: black;" class="mb-5">Tổng tiền : <%= tong_tien %>đ</p>
+        <% if(donhang.trang_thai=="chờ xử lý"){ %>
+        <a href="/admin/donhang/xacnhan/<%= donhang._id %>">
+          <button type="submit" class="btn btn-primary">Xác nhận và gửi mail thông báo</button>
+        </a>
+        <% } %>
+        
       </div>
     </div>
   </body>

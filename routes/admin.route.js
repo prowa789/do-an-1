@@ -21,6 +21,8 @@ route.post('/dienthoai/sua/:id', controller.suadienthoai_post);
 //don hang
 route.get('/donhang', controller.donhang);
 route.get('/donhang/chitiet/:id', controller.chitietdonhang);
+route.get('/donhang/huy/:id', controller.huydonhang);
+route.get('/donhang/xacnhan/:id', controller.xacnhandonhang);
 
 route.get('/user/doimatkhau',controller.doimatkhau);
 route.post('/user/doimatkhau',controller.doimatkhau_post);
