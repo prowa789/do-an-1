@@ -3478,12 +3478,27 @@ ul#demo1_thumbs {
     overflow-y: scroll;
 }
 
-
 a.checkout-btn{
     text-decoration: none;
 }
 /* giỏ hàng*/
-@media screen and (max-width: 600px) {
+#cart .col1{
+}
+#cart .col2{
+    width: 150px;
+}
+#cart .col3{
+    width: 200px;
+}
+#cart .trash{
+    color: white;
+    background-color: rgb(216, 5, 5);
+    padding: 10px 20px 10px 20px;
+}
+@media screen and (max-width: 768px) {
+    #cart .trash{
+        display: block;
+    }
     .ten-san-pham{
         color: white;
         font-weight: 500;
