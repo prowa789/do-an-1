@@ -1,12 +1,10 @@
-var shortid = require('shortid');
 var User = require('../model/user.model');
 var Dienthoai = require('../model/dienthoai.model');
-var Danhmuc = require('../model/danhmuc.model');
 var Donhang = require('../model/donhang.model');
 
-//trang chủ
-module.exports.index = function (req, res) {
-    res.render('admin-sanpham');
+// admin
+module.exports.index = function (req, res) {    
+    res.render('admin-dienthoai');
 }
 // user
 module.exports.user = function (req, res) {
@@ -56,31 +54,32 @@ module.exports.signout = function (req, res) {
     res.clearCookie('userID');
     res.redirect('/admin')
 }
-// sản phẩm
-module.exports.sanpham = async function (req, res) {
+// điện thoại
+module.exports.dienthoai = async function (req, res) {
+    console.log(req.session)
     var dienthoai = await Dienthoai.find({});
-    res.render('admin-sanpham', { dienthoai: dienthoai });
+    res.render('admin-dienthoai', { dienthoai: dienthoai });
 }
-module.exports.themsanpham = function (req, res) {
-    res.render('admin-themsanpham');
+module.exports.themdienthoai = function (req, res) {
+    res.render('admin-themdienthoai');
 }
-module.exports.themsanpham_post = function (req, res) {
+module.exports.themdienthoai_post = function (req, res) {
     var item = req.body;
     var dienthoai = new Dienthoai(item);
     dienthoai.save();
-    res.redirect('/admin/sanpham');
+    res.redirect('/admin/dienthoai');
 }
-module.exports.xoasanpham = function (req, res) {
+module.exports.xoadienthoai = function (req, res) {
     var id_san_pham = req.params.id;
     Dienthoai.findByIdAndDelete({ id_san_pham }).exec();
-    res.redirect('/admin/sanpham');
+    res.redirect('/admin/dienthoai');
 }
-module.exports.suasanpham = async function (req, res) {
+module.exports.suadienthoai = async function (req, res) {
     var id_san_pham = req.params.id;
     var dienthoai = await Dienthoai.findOne({ phone_id: id_san_pham });
-    res.render('admin-suasanpham', { dienthoai: dienthoai });
+    res.render('admin-suadienthoai', { dienthoai: dienthoai });
 }
-module.exports.suasanpham_post = function (req, res) {
+module.exports.suadienthoai_post = function (req, res) {
     var item = req.body;
     var id_san_pham = req.params.id;
     Dienthoai.updateOne({ phone_id: id_san_pham }, {
@@ -105,35 +104,7 @@ module.exports.suasanpham_post = function (req, res) {
             promotion: item.promotion
         }
     }).exec();
-    res.redirect('/admin/sanpham');
-}
-// Danh mục
-module.exports.danhmuc = async function (req, res) {
-    var danhmuc = await Danhmuc.find({});
-    res.render('admin-danhmuc', { danhmuc: danhmuc });
-}
-module.exports.themdanhmuc = function (req, res) {
-    res.render('admin-themdanhmuc');
-}
-module.exports.themdanhmuc_post = function (req, res) {
-    var danhmuc = new Danhmuc(req.body);
-    danhmuc.save();
-    res.redirect('/admin/danhmuc');
-}
-module.exports.xoadanhmuc = function (req, res) {
-    var id_danh_muc = req.params.id;
-    Danhmuc.findOneAndDelete({ id_danh_muc }).exec();
-    res.redirect('/admin/danhmuc');
-}
-module.exports.suadanhmuc = function (req, res) {
-    var id_danh_muc = req.params.id;
-    res.render('admin-suadanhmuc', { id: id_danh_muc });
-}
-module.exports.suadanhmuc_post = function (req, res) {
-    var item = req.body;
-    var id_danh_muc = req.params.id;
-    Danhmuc.updateOne({ id_danh_muc: id_danh_muc }, { $set: { ten_danh_muc: item.ten_danh_muc } }).exec();
-    res.redirect('/admin/danhmuc');
+    res.redirect('/admin/dienthoai');
 }
 // Đơn hàng
 module.exports.donhang = async function (req, res) {

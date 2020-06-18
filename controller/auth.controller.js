@@ -1,4 +1,3 @@
-
 var User = require('../model/user.model');
 
 module.exports.login = function (req, res) {

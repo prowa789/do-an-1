@@ -2,8 +2,8 @@ var Dienthoai = require('../model/dienthoai.model');
 var Binhluan = require('../model/binhluan.model');
 
 module.exports.index = async function (req, res) {
-    var sessionId = req.signedCookies.sessionId;
-    if (!sessionId) {
+    var session = req.session.cart;
+    if (!session) {
         res.redirect('/');
         return;
     }
@@ -49,22 +49,4 @@ module.exports.comment_post = async function (req, res) {
     })
 
 }
-module.exports.search = async function (req, res) {
-    var q = req.query.q;
-    var product = await Product.find();
-    var matchedproduct = product.filter(function (product) {
-        return product.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
-    });
-    res.render('product', { product: matchedproduct });
 
-}
-
-module.exports.getCreate = function (req, res) {
-    res.render('productCreate');
-}
-module.exports.postCreate = async function (req, res) {
-    var item = req.body;
-    var product = await Product(item);
-    product.save();
-    res.redirect('/product');
-}

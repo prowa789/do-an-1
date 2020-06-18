@@ -1,7 +1,7 @@
 
 var User = require('../model/user.model');
 
-module.exports.authMiddleware = function(req,res,next){
+module.exports = function(req,res,next){
     if(!req.signedCookies.userID){
         res.redirect('/login');
         return;

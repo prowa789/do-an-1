@@ -1,8 +1,8 @@
 var Dienthoai = require('../model/dienthoai.model');
 
 module.exports.show = async function(req,res){
-    var sessionId = req.signedCookies.sessionId;
-    if(!sessionId){
+    var session = req.session.cart;
+    if(!session){
         res.redirect('/'); 
         return;
     }
