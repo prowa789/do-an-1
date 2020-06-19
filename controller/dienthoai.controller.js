@@ -42,7 +42,7 @@ module.exports.comment_post = async function (req, res) {
             noi_dung: req.body.noi_dung,
             email: req.body.email,
             sdt: req.body.sdt,
-            ngay_gio: new Date()
+            ngay_gio: Date.now()
         });
         binhluan.save();
         res.redirect('/dienthoai/' + phone_id);
