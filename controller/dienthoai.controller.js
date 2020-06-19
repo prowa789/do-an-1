@@ -35,18 +35,17 @@ module.exports.show = async function (req, res) {
 }
 module.exports.comment_post = async function (req, res) {
     var phone_id = req.params.id;
-    Binhluan.findOne({ id_sp: phone_id }, function (err, bl) {
-        var binhluan = new Binhluan({
-            id_sp: phone_id,
-            ho_ten: req.body.ho_ten,
-            noi_dung: req.body.noi_dung,
-            email: req.body.email,
-            sdt: req.body.sdt,
-            ngay_gio: Date.now()
-        });
-        binhluan.save();
-        res.redirect('/dienthoai/' + phone_id);
-    })
+
+    var binhluan = new Binhluan({
+        id_sp: phone_id,
+        ho_ten: req.body.ho_ten,
+        noi_dung: req.body.noi_dung,
+        email: req.body.email,
+        sdt: req.body.sdt,
+        ngay_gio: Date.now()
+    });
+    binhluan.save();
+    res.redirect('/dienthoai/' + phone_id);
 
 }
 
