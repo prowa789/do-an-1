@@ -1850,7 +1850,19 @@ img {
 .product-carousel .owl-carousel .owl-item img {
     width: inherit;
     display: inline-block;
+    box-sizing: border-box;
+    transition:0.4s;
+    position: relative;
+    top:0;
 }
+.product-carousel .owl-carousel .owl-item img:hover {
+    top:-20px;
+}
+
+.product-carousel .owl-carousel .owl-item{
+    padding-top: 20px;  
+}
+
 
 .product-carousel .owl-theme .owl-nav {
     line-height: 1;
@@ -1861,8 +1873,8 @@ img {
 .product-carousel .owl-theme .owl-nav .owl-prev {
     position: absolute;
     top: 40%;
-    left: -60px;
-    color: #a9acae;
+    left: -30px;
+    color: #fd79a8;
     font-size: 60px;
     margin: 12px;
     padding: 0px;
@@ -1877,8 +1889,8 @@ img {
 .product-carousel .owl-theme .owl-nav .owl-next {
     position: absolute;
     top: 40%;
-    right: -32px;
-    color: #a9acae;
+    right: -7px;
+    color: #fd79a8;
     font-size: 60px;
     margin: 12px;
     padding: 0px;

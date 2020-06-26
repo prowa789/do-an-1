@@ -72,7 +72,7 @@ module.exports.themdienthoai_post = function (req, res) {
 }
 module.exports.xoadienthoai = function (req, res) {
     var id_san_pham = req.params.id;
-    Dienthoai.findByIdAndDelete({ id_san_pham }).exec();
+    Dienthoai.findOneAndDelete({phone_id:id_san_pham}).exec();
     res.redirect('/admin/dienthoai');
 }
 module.exports.suadienthoai = async function (req, res) {

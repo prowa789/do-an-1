@@ -27,7 +27,7 @@ module.exports.add = async function (req, res) {
         gia_hien_thi: dienthoai.gia_hien_thi,
         promotion: dienthoai.promotion,
         so_luong: 1
-    }
+    }   
     session.gio_hang.push(item);
     res.redirect('/giohang');
 }
