@@ -959,8 +959,9 @@ img {
     background-color: #fff;
 }
 
-.logo {
-    margin-top: 6px;
+.logo img{
+    width: 100%;
+
 }
 
 .top-header {
