@@ -34,13 +34,17 @@ module.exports.add = async function (req, res) {
 
 module.exports.show = async function (req, res) {
     //code in here
+    var errors =[];
     var session = req.session.cart;
     if (!session) {
         res.redirect('/');
         return;
     }
+    if(session.tong_san_pham==0){
+        errors.push("Không có sản phẩm nào trong giỏ hàng");
+    }
     var tong_tien = convertMoney(session.tong_tien);
-    res.render('cart', { session: session,tong_tien:tong_tien });
+    res.render('cart', { session: session,tong_tien:tong_tien,errors:errors});
 }
 module.exports.dathang_post = async function (req, res) {
     var session = req.session.cart;

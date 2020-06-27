@@ -23,7 +23,8 @@
 <body>
     <%- include('header'); -%>
     <div class="container">
-        <h1 style="padding: 3rem;text-align: center;">Giỏ hàng</h2>
+        <h1 style="padding-top: 3rem;text-align: center;">Giỏ hàng</h2>
+            <% if(session){ %>
             <table id="cart" class="table table-hover table-condensed">
                 <thead>
                     <tr>
@@ -33,8 +34,11 @@
                         <th class="col4">Thao tác</th>
                     </tr>
                 </thead>
+                <% if(locals.errors){ %>
+                    <p style="text-align: center;font-size: 30px;color:red;"><%= locals.errors[0] %></p>
+                <% } %>
                 <tbody>
-                    <% if(session){ %>
+                    
                     <% for(var i = 0;i < session.gio_hang.length;i++){ %>
                     <tr>
                         <td data-th="Product">
