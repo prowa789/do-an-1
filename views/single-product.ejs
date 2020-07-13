@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><%=dienthoai[0].name%></title>
+    <title><%=dienthoai.name%></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -26,7 +26,7 @@
                         <ol class="breadcrumb">
                             <li><a href="/">Trang chủ</a></li>
                             <li><a href="/dienthoai">Điện thoại</a></li>
-                            <li><a href="/dienthoai/<%=dienthoai[0].phone_id%>"><%=dienthoai[0].name%></a></li>
+                            <li><a href="/dienthoai/<%=dienthoai.phone_id%>"><%=dienthoai.name%></a></li>
                         </ol>
                     </div>
                 </div>
@@ -36,19 +36,19 @@
     <div class="container" style="background-color: #fff;margin-top: 10px;">
         <div class="row info-san-pham">
             <div class="col-sm-5">
-                <img src="<%=dienthoai[0].hinh_anh%>" alt="">
+                <img src="<%=dienthoai.hinh_anh%>" alt="">
             </div>
             <div class="col-sm-7">
                 <h3 class="ten-san-pham">
-                    <%=dienthoai[0].name%>
+                    <%=dienthoai.name%>
                 </h3>
                 <div class="gia-tien">
-                    <%=dienthoai[0].gia_hien_thi%>
+                    <%=dienthoai.gia_hien_thi%>
                 </div>
                 <div class="promotion">
-                    <small><%=dienthoai[0].promotion%></small>
+                    <small><%=dienthoai.promotion%></small>
                 </div>
-                <a href="/giohang/add/<%=dienthoai[0].phone_id%>" class="btn btn-success">Thêm vào giỏ hàng</a>
+                <a href="/giohang/add/<%=dienthoai.phone_id%>" class="btn btn-success">Thêm vào giỏ hàng</a>
             </div>
         </div>
         <div class="row">
@@ -58,39 +58,39 @@
                     <tbody>
                         <tr>
                             <td class="cot1" style="color: black;">Màn hình</td>
-                            <td><%=dienthoai[0].man_hinh%></td>
+                            <td><%=dienthoai.man_hinh%></td>
                         </tr>
                         <tr>
                             <td class="cot1" style="padding-left: 3rem;color: black;">Hệ điều hành</td>
-                            <td><%=dienthoai[0].he_dieu_hanh%></td>
+                            <td><%=dienthoai.he_dieu_hanh%></td>
                         </tr>
                         <tr>
                             <td class="cot1" style="padding-left: 3rem;color: black;">Camera sau</td>
-                            <td><%=dienthoai[0].camera_sau%></td>
+                            <td><%=dienthoai.camera_sau%></td>
                         </tr>
                         <tr>
                             <td style="padding-left: 3rem;color: black;">Camera trước</td>
-                            <td><%=dienthoai[0].camera_truoc%></td>
+                            <td><%=dienthoai.camera_truoc%></td>
                         </tr>
                         <tr>
                             <td style="padding-left: 3rem;color: black;">CPU</td>
-                            <td><%=dienthoai[0].cpu%></td>
+                            <td><%=dienthoai.cpu%></td>
                         </tr>
                         <tr>
                             <td style="padding-left: 3rem;color: black;">RAM</td>
-                            <td><%=dienthoai[0].ram%></td>
+                            <td><%=dienthoai.ram%></td>
                         </tr>
                         <tr>
                             <td style="padding-left: 3rem;color: black;">Bộ nhớ trong</td>
-                            <td><%=dienthoai[0].bo_nho_trong%></td>
+                            <td><%=dienthoai.bo_nho_trong%></td>
                         </tr>
                         <tr>
                             <td style="padding-left: 3rem;color: black;">Thẻ sim</td>
-                            <td><%=dienthoai[0].the_sim%></td>
+                            <td><%=dienthoai.the_sim%></td>
                         </tr>
                         <tr>
                             <td style="padding-left: 3rem;color: black;">Dung lượng pin</td>
-                            <td><%=dienthoai[0].dung_luong_pin%></td>
+                            <td><%=dienthoai.dung_luong_pin%></td>
                         </tr>
 
                     </tbody>
@@ -100,26 +100,32 @@
         </div>
         <div class="row binhluan">
             <h3>Leave a reply</h3>
-            <form action="/dienthoai/<%= dienthoai[0].phone_id%> " method="POST">
+            <form>
                 <div class="form-group">
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-4">
                                 <label for="">Họ tên</label>
-                                <input type="text" class="form-control input-bl" name="ho_ten" required>
+                                <input type="text" class="form-control input-bl" id="ho_ten" name="ho_ten" required
+                                    placeholder="Họ tên(bắt buộc)">
                             </div>
                             <div class="col-sm-4">
                                 <label for="">Email</label>
-                                <input type="email" class="form-control input-bl" name="email" required>
+                                <input type="email" class="form-control input-bl" id="email" name="email"
+                                    placeholder="Email(không bắt buộc)">
                             </div>
                             <div class="col-sm-4">
                                 <label for="">SĐT</label>
-                                <input type="text" class="form-control input-bl" name="sdt" required>
+                                <input type="text" class="form-control input-bl" id="sdt" name="sdt"
+                                    placeholder="SĐT(không bắt buộc)">
                             </div>
                             <div class="col-sm-6">
                                 <label for="">Viết bình luận</label>
-                                <textarea style="display:block;margin-bottom:20px" class="form-control" name="noi_dung" rows="5" cols="" required></textarea>
-                                <button type="submit" class="btn btn-success" style="margin-bottom:20px">Gửi</button>
+                                <textarea style="display:block;margin-bottom:20px" class="form-control" id="noi_dung"
+                                    name="noi_dung" rows="5" cols="" required
+                                    placeholder="bình luận(bắt buộc)"></textarea>
+                                <button type="submit" class="btn btn-success" id='cc'
+                                    style="margin-bottom:20px">Gửi</button>
                             </div>
                         </div>
                     </div>
@@ -158,6 +164,31 @@
     <!-- footer -->
     <%- include('footer'); -%>
     <!-- end footer -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('form').on('submit', function () {
+                var item = {
+                    ho_ten: $('#ho_ten').val(),
+                    email: $('#email').val(),
+                    sdt: $('#sdt').val(),
+                    noi_dung: $('#noi_dung').val()
+
+                };
+                $.ajax({
+                    type: 'POST',
+                    url: '/dienthoai/<%= dienthoai.phone_id%>',
+                    dataType: 'json',
+                    data: item,
+                    success: function (data) {
+                        location.reload();
+                    }
+                })
+            })
+
+
+
+        })
+    </script>
     <script src="/js/menumaker.js" type="text/javascript"></script>
 </body>
 

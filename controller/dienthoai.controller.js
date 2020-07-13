@@ -2,11 +2,6 @@ var Dienthoai = require('../model/dienthoai.model');
 var Binhluan = require('../model/binhluan.model');
 
 module.exports.index = async function (req, res) {
-    var session = req.session.cart;
-    if (!session) {
-        res.redirect('/');
-        return;
-    }
     var page = parseInt(req.query.page) || 1; //http://www.nettruyen.com/?page=2
     var itemPerPage = 8;
     var start = itemPerPage * (page - 1)
@@ -30,8 +25,8 @@ module.exports.index = async function (req, res) {
 module.exports.show = async function (req, res) {
     var phone_id = req.params.id;
     var binhluan = await Binhluan.find({ id_sp: phone_id });
-    var phone = await Dienthoai.find({ phone_id: phone_id });
-    res.render('single-product', { dienthoai: phone, binhluan: binhluan });
+    var dienthoai = await Dienthoai.findOne({ phone_id: phone_id });
+    res.render('single-product', { dienthoai: dienthoai, binhluan: binhluan });
 }
 module.exports.comment_post = async function (req, res) {
     var phone_id = req.params.id;
@@ -44,7 +39,8 @@ module.exports.comment_post = async function (req, res) {
         ngay_gio: Date.now()
     });
     binhluan.save();
-    res.redirect('/dienthoai/' + phone_id);
+    res.json(binhluan);
+    
 
 }
 

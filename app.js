@@ -9,9 +9,10 @@ var loginRoute = require('./routes/login.route');
 var authMiddleware= require('./middleware/auth.middleware');
 var sessionMiddleware = require('./middleware/session.middleware');
 var cartRoute = require('./routes/cart.route');
-var trangchuRoute = require('./routes/trangchu.route');
+var indexRoute = require('./routes/index.route');
 var searchRoute = require('./routes/search.route');
 var session = require('express-session');
+var apiCartRoute = require('./api/routes/cart.routes');
 
 //database
 var mongoose = require('mongoose');
@@ -36,12 +37,12 @@ app.use(express.static('./public')); //khai bao de file tinh o thu muc public
 
 // routes
 app.use('/admin', authMiddleware,adminRoute);
-app.use('/dienthoai', sessionMiddleware,dienthoaiRoute);
-app.use('/login',sessionMiddleware, loginRoute);
+app.use('/dienthoai', dienthoaiRoute);
+app.use('/login', loginRoute);
 app.use('/giohang',sessionMiddleware, cartRoute);
-app.use('/',sessionMiddleware, trangchuRoute);
-app.use('/search',sessionMiddleware, searchRoute);
-
+app.use('/',indexRoute);
+app.use('/search', searchRoute);
+app.use('/api/giohang',apiCartRoute);
 var port = process.env.PORT || 3001;
 app.listen(port);
 

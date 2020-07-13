@@ -24,7 +24,7 @@
     <%- include('header'); -%>
     <div class="container">
         <h1 style="padding-top: 3rem;text-align: center;">Giỏ hàng</h2>
-            <% if(session){ %>
+            <% if(cart){ %>
             <table id="cart" class="table table-hover table-condensed">
                 <thead>
                     <tr>
@@ -37,35 +37,35 @@
                 <% if(locals.errors){ %>
                     <p style="text-align: center;font-size: 30px;color:red;"><%= locals.errors[0] %></p>
                 <% } %>
-                <tbody>
+                <tbody id="cccc">
                     
-                    <% for(var i = 0;i < session.gio_hang.length;i++){ %>
+                    <% for(var i = 0;i < cart.san_pham.length;i++){ %>
                     <tr>
                         <td data-th="Product">
                             <div class="row">
-                                <div class="col-sm-2 hidden-xs"><img src="<%= session.gio_hang[i].hinh_anh %>"
+                                <div class="col-sm-2 hidden-xs"><img src="<%= cart.san_pham[i].hinh_anh %>"
                                         alt="Sản phẩm 1" class="img-responsive" width="100px">
                                 </div>
                                 <div class="col-sm-10">
-                                    <h4 class="nomargin ten-san-pham"><%= session.gio_hang[i].name %></h4>
+                                    <h4 class="nomargin ten-san-pham"><%= cart.san_pham[i].name %></h4>
                                 </div>
                             </div>
                         </td>
-                        <td data-th="Price"><%= session.gio_hang[i].gia_hien_thi %></td>
+                        <td data-th="Price"><%= cart.san_pham[i].gia_hien_thi %></td>
                         <td data-th="Quantity">
-                            <a href="/giohang/add/<%= session.gio_hang[i].phone_id %>" class="btn btn-success"
+                            <a href="/giohang/add/<%= cart.san_pham[i].phone_id %>" class="btn btn-success clickne"
                                 style="padding:10px;display: inline;">
                                 <i class="fa fa-plus" style="padding-left:5px;box-sizing: border-box;"></i>
                             </a>
-                            <button
-                                style="width:33%;padding:10px;margin-left:5px;"><%= session.gio_hang[i].so_luong %></button>
-                            <a href="/giohang/substract/<%= session.gio_hang[i].phone_id %>" class="btn btn-success"
+                            <button id="abcd"
+                                style="width:33%;padding:10px;margin-left:5px;"><%= cart.san_pham[i].so_luong %></button>
+                            <a href="/giohang/substract/<%= cart.san_pham[i].phone_id %>" class="btn btn-success clickne"
                                 style="padding:10px 10px ;display: inline;">
                                 <i class="fa fa-minus" style="padding-left:5px;box-sizing: border-box;"></i>
                             </a>
                         </td>
                         <td>
-                            <a href="/giohang/remove/<%= session.gio_hang[i].phone_id %>" class="btn trash">
+                            <a href="/giohang/remove/<%= cart.san_pham[i].phone_id %>" class="btn trash">
                                 <i class="fa fa-trash-o"></i>
                             </a>
                             </button>
@@ -139,7 +139,7 @@
     </form>
    
     <%- include('footer'); -%>
-
+    
 
     <script src="./js/jquery.min.js" type="text/javascript"></script>
 

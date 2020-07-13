@@ -4,7 +4,7 @@ module.exports = function (req, res, next) {
     req.session.cart = {
         tong_tien: 0,
         tong_san_pham: 0,
-        gio_hang:[]
+        san_pham:[]
     }
   }
   next();

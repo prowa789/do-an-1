@@ -2,7 +2,7 @@ var Dienthoai = require('../model/dienthoai.model');
 
 module.exports.filter = async function (req, res) {
     var phone;
-    var query = req.query;
+    var query = req.query; // lấy query của người dùng
     var wrongs = [];
     if (query.brand && query.gia) {
         //code
@@ -85,13 +85,19 @@ module.exports.filter = async function (req, res) {
     })
 }
 module.exports.search = async function (req, res) {
-    // tim kiem phone co brand hoac name = cái mình nhập 
-    // không phân biệt chữ hoa chữ thường
+    // tim kiem phone chứa từ mình nhập $regex: req.query.q
+    // không phân biệt chữ hoa chữ thường $options: "$i"
+    var wrongs=[];
     var phone = await Dienthoai.find({
         $or: [
             { "brand": { $regex: req.query.q, $options: "$i" } }, { "name": { $regex: req.query.q, $options: "$i" } }
         ]
     });
+    if(phone.length==0){
+        wrongs.push('Không có sản phẩm nào');
+        res.render('product-list', { wrongs: wrongs });
+        return;
+    }
     var page = parseInt(req.query.page) || 1; //http://www.nettruyen.com/?page=2
     var itemPerPage = 8;
     var start = itemPerPage * (page - 1)
@@ -104,7 +110,7 @@ module.exports.search = async function (req, res) {
     else {
         numberOfPage = parseInt(length / itemPerPage + 1);
     }
-    phone = phone.slice(start, end);
+    phone = phone.slice(start, end); // start =0 end = 8 thì lấy các điện thoại từ 0->7
     res.render('product-list', {
         dienthoai: phone,
         page: page,

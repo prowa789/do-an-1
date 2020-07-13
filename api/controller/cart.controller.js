@@ -1,48 +1,24 @@
-var Dienthoai = require('../model/dienthoai.model');
-var Donhang = require('../model/donhang.model');
+var Dienthoai = require('../../model/dienthoai.model');
+var Donhang = require('../../model/donhang.model');
 
 module.exports.add = async function (req, res) {
     var phone_id = req.params.phone_id; // params là cái /:phone_id ở trong 'localhost:3001/giohang/add/:phone_id'
     var cart = req.session.cart;
-    if (!cart) {
-        res.redirect('/giohang');
-        return;
-    }
     var dienthoai = await Dienthoai.findOne({ phone_id: phone_id });
     cart.tong_san_pham++;
     cart.tong_tien += dienthoai.gia;
     for (var i = 0; i < cart.san_pham.length; i++) {
         if (cart.san_pham[i].phone_id == phone_id) {
             cart.san_pham[i].so_luong++;
-            res.redirect('/giohang');
+            res.json(cart);
             return;
         }
     }
-    var item = {
-        phone_id: dienthoai.phone_id,
-        name: dienthoai.name,
-        hinh_anh: dienthoai.hinh_anh,
-        gia: dienthoai.gia,
-        gia_hien_thi: dienthoai.gia_hien_thi,
-        promotion: dienthoai.promotion,
-        so_luong: 1
-    }   
-    cart.san_pham.push(item);
-    res.redirect('/giohang');
 }
 module.exports.show = async function (req, res) {
     //code in here
-    var errors =[];
     var cart = req.session.cart;
-    if (!cart) {
-        res.redirect('/giohang');
-        return;
-    }
-    if(cart.tong_san_pham==0){
-        errors.push("Không có sản phẩm nào trong giỏ hàng");
-    }
-    var tong_tien = convertMoney(cart.tong_tien);
-    res.render('cart', { cart: cart,tong_tien:tong_tien,errors:errors});
+    res.json(cart);
 }
 module.exports.dat_hang_post = async function (req, res) {
     var cart = req.session.cart;
@@ -92,7 +68,7 @@ module.exports.substract= async function (req, res) {
             if(cart.san_pham[i].so_luong==0){
                 cart.san_pham.pop(cart.san_pham[i]);
             }
-            res.redirect('/giohang');
+            res.json(cart);
             return;
         }
     }
