@@ -100,7 +100,7 @@
         </div>
         <div class="row binhluan">
             <h3>Leave a reply</h3>
-            <form>
+            <form method="POST">
                 <div class="form-group">
                     <div class="container">
                         <div class="row">
@@ -164,31 +164,7 @@
     <!-- footer -->
     <%- include('footer'); -%>
     <!-- end footer -->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('form').on('submit', function () {
-                var item = {
-                    ho_ten: $('#ho_ten').val(),
-                    email: $('#email').val(),
-                    sdt: $('#sdt').val(),
-                    noi_dung: $('#noi_dung').val()
-
-                };
-                $.ajax({
-                    type: 'POST',
-                    url: '/dienthoai/<%= dienthoai.phone_id%>',
-                    dataType: 'json',
-                    data: item,
-                    success: function (data) {
-                        location.reload();
-                    }
-                })
-            })
-
-
-
-        })
-    </script>
+ 
     <script src="/js/menumaker.js" type="text/javascript"></script>
 </body>
 

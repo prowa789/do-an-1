@@ -57,7 +57,6 @@ module.exports.signout = function (req, res) {
 }
 // điện thoại
 module.exports.dienthoai = async function (req, res) {
-    console.log(req.session)
     var dienthoai = await Dienthoai.find({});
     res.render('admin-dienthoai', { dienthoai: dienthoai });
 }

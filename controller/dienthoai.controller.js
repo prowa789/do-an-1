@@ -39,7 +39,7 @@ module.exports.comment_post = async function (req, res) {
         ngay_gio: Date.now()
     });
     binhluan.save();
-    res.json(binhluan);
+    res.redirect('/dienthoai/'+phone_id);
     
 
 }
