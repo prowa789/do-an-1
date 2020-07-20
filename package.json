@@ -10,6 +10,7 @@
     "ejs": "3.0.1",
     "express": "4.17.1",
     "express-session": "^1.17.1",
+    "js-htmlencode": "^0.3.0",
     "lowdb": "1.0.0",
     "mongoose": "5.9.7",
     "nodemailer": "^6.4.10",

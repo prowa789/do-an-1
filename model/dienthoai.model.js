@@ -18,7 +18,8 @@ var dienthoaiSchema = new mongoose.Schema({
     the_sim: String,
     bo_nho_trong :String,
     dung_luong_pin: String,
-    promotion : String
+    promotion : String,
+    bai_dang : String
 })
 
 var Dienthoai =mongoose.model('Dienthoai',dienthoaiSchema,'dienthoai');

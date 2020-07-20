@@ -1,5 +1,6 @@
 var Dienthoai = require('../model/dienthoai.model');
 var Binhluan = require('../model/binhluan.model');
+var htmlDecode = require('js-htmlencode').htmlDecode;
 
 module.exports.index = async function (req, res) {
     var page = parseInt(req.query.page) || 1; //http://www.nettruyen.com/?page=2
@@ -26,7 +27,11 @@ module.exports.show = async function (req, res) {
     var phone_id = req.params.id;
     var binhluan = await Binhluan.find({ id_sp: phone_id });
     var dienthoai = await Dienthoai.findOne({ phone_id: phone_id });
-    res.render('single-product', { dienthoai: dienthoai, binhluan: binhluan });
+    var bai_viet="";
+    if(dienthoai.bai_dang){
+        bai_viet = htmlDecode(dienthoai.bai_dang);
+    }
+    res.render('single-product', { dienthoai: dienthoai, binhluan: binhluan ,bai_viet:bai_viet});
 }
 module.exports.comment_post = async function (req, res) {
     var phone_id = req.params.id;

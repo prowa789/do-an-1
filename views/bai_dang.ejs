@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Bài đăng</title>
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <script src='https://cdn.tiny.cloud/1/uu7xok7bd9q5mnzcp7atzn5giocuccf3wz8ygmh543we39va/tinymce/5/tinymce.min.js' referrerpolicy="origin">
+  </script>
+  <script>
+    tinymce.init({
+      selector: '#mytextarea'
+    });
+  </script>
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+  <script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" href="/css/admin.css">
+  <script src="/js/admin.js"></script>
+</head>
+
+<body>
+  <%- include('admin-navbar'); -%>
+  <!-- breadcum -->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+    <li class="breadcrumb-item"><a href="#">Thêm bài đăng</a></li>
+  </ol>
+  <div class="container">
+    <h1>Thêm bài đăng</h1>
+    <form method="post">
+      <textarea id="mytextarea" name="mytextarea"></textarea>
+      <button class="btn btn-success mt-5 mb-5 ml-2" type="submit">Thêm bài đăng</button>
+    </form>
+</div>
+ 
+
+
+</body>
+
+</html>

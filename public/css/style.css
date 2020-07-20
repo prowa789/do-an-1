@@ -3582,16 +3582,15 @@ img{width: 80%;margin:auto;}
     padding: 20px;
     margin-top: 20px;
 }
-
-.chi-tiet-san-pham h3{
+#noi_dung img{
+    /* width: fit-content; */
+}
+.bar-xanh{
     padding:10px 0 10px 30px;
     background-color: #0cafe5;
     color: white;
 }
-.chi-tiet-san-pham .cot1{
-    padding-left: 3rem; 
-    width: 15%;
-}
+
 /* binhluan */
 .binhluan h3{
     padding:10px 0 10px 30px;

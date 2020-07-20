@@ -53,8 +53,9 @@
           <td><img src="<%= dienthoai[i].hinh_anh %>" alt="" style="width: 50px" ;></td>
           <td><%= dienthoai[i].brand %></td>
           <td><%= dienthoai[i].so_luong %></td>
-          <td><%= dienthoai[i].gia_hien_thi %></td>
+          <td id="gia_dt"><%= dienthoai[i].gia %></td>
           <td>
+            <a href="/dienthoai/<%= dienthoai[i].phone_id %>" class="btn btn-success">Xem</a>
             <a href="/admin/dienthoai/xoa/<%= dienthoai[i].phone_id %>" class="btn btn-danger">Xóa</a>
             <a href="/admin/dienthoai/sua/<%= dienthoai[i].phone_id %>" class="btn btn-dark">Sửa</a>
           </td>

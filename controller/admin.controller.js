@@ -2,6 +2,9 @@ var User = require('../model/user.model');
 var nodemailer = require('nodemailer'); // khai báo sử dụng module nodemailer
 var Dienthoai = require('../model/dienthoai.model');
 var Donhang = require('../model/donhang.model');
+var Baidang = require('../model/baidang.model')
+var htmlEncode = require('js-htmlencode').htmlEncode;
+var htmlDecode = require('js-htmlencode').htmlDecode;
 
 // admin
 module.exports.index = function (req, res) {
@@ -77,7 +80,12 @@ module.exports.xoadienthoai = function (req, res) {
 module.exports.suadienthoai = async function (req, res) {
     var id_san_pham = req.params.id;
     var dienthoai = await Dienthoai.findOne({ phone_id: id_san_pham });
-    res.render('admin-suadienthoai', { dienthoai: dienthoai });
+    var bai_viet="";
+    if(dienthoai.bai_dang){
+        bai_viet = htmlDecode(dienthoai.bai_dang);
+    }
+    res.render('admin-suadienthoai', { dienthoai: dienthoai ,bai_viet:bai_viet});
+    
 }
 module.exports.suadienthoai_post = function (req, res) {
     var item = req.body;
@@ -101,7 +109,8 @@ module.exports.suadienthoai_post = function (req, res) {
             the_sim: item.the_sim,
             bo_nho_trong: item.bo_nho_trong,
             dung_luong_pin: item.dung_luong_pin,
-            promotion: item.promotion
+            promotion: item.promotion,
+            bai_dang : htmlEncode(item.bai_dang) 
         }
     }).exec();
     res.redirect('/admin/dienthoai');
@@ -166,6 +175,16 @@ module.exports.xacnhandonhang = async function (req, res) {
     donhang.trang_thai = "đã xác nhận";
     donhang.save();
 }
+
+module.exports.bai_dang = async function(req,res){
+    var baidang= await Baidang.find({});
+    res.render('bai_dang',{baidang:baidang});
+}
+module.exports.bai_dang_post = async function(req,res){
+  
+
+}
+
 // convert Money
 function convertMoney(money) {
     var string = "";

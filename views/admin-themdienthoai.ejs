@@ -10,6 +10,13 @@
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
+  <script src='https://cdn.tiny.cloud/1/uu7xok7bd9q5mnzcp7atzn5giocuccf3wz8ygmh543we39va/tinymce/5/tinymce.min.js' referrerpolicy="origin">
+  </script>
+  <script>
+    tinymce.init({
+      selector: '#mytextarea'
+    });
+  </script>
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -82,9 +89,13 @@
         <input type="text" class="form-control" name="promotion" required>
       </div>
     </div>
+    <div class="container-fluid">
+      <label for="">Bài đăng</label>
+        <textarea id="mytextarea" name="bai_dang" rows="19"></textarea>
+     
+  </div>
     <button class="btn btn-success mt-5 mb-5 ml-2" type="submit">Thêm sản phẩm</button>
-  </form>
-
+   </form>
 </body>
 
 </html>

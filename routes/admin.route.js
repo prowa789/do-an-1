@@ -23,8 +23,11 @@ route.get('/donhang', controller.donhang);
 route.get('/donhang/chitiet/:id', controller.chitietdonhang);
 route.get('/donhang/huy/:id', controller.huydonhang);
 route.get('/donhang/xacnhan/:id', controller.xacnhandonhang);
-
+//doi mat khau
 route.get('/user/doimatkhau',controller.doimatkhau);
 route.post('/user/doimatkhau',controller.doimatkhau_post);
+//bai_dang
+route.get('/bai_dang/add',controller.bai_dang);
+route.post('/bai_dang/add',controller.bai_dang_post);
 
 module.exports = route;

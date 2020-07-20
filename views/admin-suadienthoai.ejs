@@ -8,7 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
+<script src='https://cdn.tiny.cloud/1/uu7xok7bd9q5mnzcp7atzn5giocuccf3wz8ygmh543we39va/tinymce/5/tinymce.min.js' referrerpolicy="origin">
+</script>
+<script>
+  tinymce.init({
+    selector: '#mytextarea'
+  });
+</script>
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -26,6 +32,7 @@
 </head>
   <body>
     <%- include('admin-navbar'); -%>
+    
     <!-- breadcum -->
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/admin"></a>Trang chủ</a></li>
@@ -36,8 +43,7 @@
         <div class="cot1">
             <label>Mã điện thoại</label>
             <input type="" class="form-control" name="phone_id" value="<%=dienthoai.phone_id%>" readonly>
-            <label>Mã danh mục</label>
-            <input type="text" class="form-control" name="danh_muc_id" value="<%=dienthoai.danh_muc_id%>" required>
+      
             <label>Tên sản phẩm</label>
             <input type="text" class="form-control" name="name" value="<%=dienthoai.name%>" required>
             <label>Giá sản phẩm(VND)</label>
@@ -81,6 +87,16 @@
           <input type="text" class="form-control" name="promotion" value="<%=dienthoai.promotion%>" required>
         </div>   
       </div>
+      <div class="container-fluid">
+        <label for="">Bài đăng</label>
+        
+        <textarea id="mytextarea" name="bai_dang" rows="19">
+          <% if(bai_viet) { %>
+          <%=bai_viet%>
+          <% } %>
+        </textarea>
+        
+    </div>
       <button class="btn btn-success mt-5 mb-5 ml-2" type="submit">Sửa sản phẩm</button>
     </form>
     
