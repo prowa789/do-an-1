@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 body {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -21,7 +20,6 @@ h6 {
     color: #1c1e1e;
     margin: 0px 0px 15px 0px;
     font-weight: 400;
-    font-family: 'Roboto Condensed', sans-serif;
 }
 
 h1 {
@@ -3196,6 +3194,9 @@ img {
 .key-features p {
     font-size: 14px;
 }
+#noi_dung img{
+    width: fit-content;
+}
 
 /*==========  Non-Mobile First Method  ==========*/
 
@@ -3225,6 +3226,9 @@ img {
 
 /* Small Devices, Tablets */
 @media only screen and (max-width:768px) {
+    #noi_dung img{
+        width: fit-content;
+    }
     .search-bg {
         top: 5px;
     }
@@ -3582,11 +3586,9 @@ img{width: 80%;margin:auto;}
     padding: 20px;
     margin-top: 20px;
 }
-#noi_dung img{
-    /* width: fit-content; */
-}
+
 .bar-xanh{
-    padding:10px 0 10px 30px;
+    padding:10px 0 10px 10px;
     background-color: #0cafe5;
     color: white;
 }
@@ -3598,7 +3600,6 @@ img{width: 80%;margin:auto;}
     color: white;
 }
 .binhluan .input-bl{height: 40px;}
-
 
 .slide img{
     width: 100%;

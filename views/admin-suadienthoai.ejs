@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Sửa điện thoại</title>
+    <title>Sửa <%= dienthoai.name %></title>
     <link rel="shortcut icon" href="/images/favicon.ico">
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -12,7 +12,18 @@
 </script>
 <script>
   tinymce.init({
-    selector: '#mytextarea'
+  selector: '#mytextarea',
+  plugins: [
+  'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+  'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+  'table emoticons template paste help'
+],
+toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons',
+menu: {
+  favs: {title: 'My Favorites', items: 'code visualaid | searchreplace | spellchecker | emoticons'}
+},
+menubar: 'favs file edit view insert format tools table help',
+
   });
 </script>
 <!-- jQuery library -->
@@ -63,12 +74,7 @@
             <label>Hệ điều hành</label>
             <input type="text" class="form-control" name="he_dieu_hanh" value="<%=dienthoai.he_dieu_hanh%>" required>
             <label>Hãng sản xuất</label>
-            <select class="form-control" name="brand">
-              <option>apple</option>
-              <option>samsung</option>
-              <option>xiaomi</option>
-              <option>huawei</option>
-            </select>
+            <input type="text" class="form-control" name="brand" value="<%=dienthoai.brand%>" required>
             <label>Thẻ sim</label>
             <input type="text" class="form-control" name="the_sim" value="<%=dienthoai.the_sim%>" required>
           </div>

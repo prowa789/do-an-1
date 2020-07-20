@@ -35,7 +35,7 @@
             </div>
         </div>
     </div>
-    <div class="container" style="background-color: #fff;margin-top: 10px;">
+    <div class="container" style="background-color: #fff;">
         <div class="row info-san-pham">
             <div class="col-sm-5">
                 <img src="<%=dienthoai.hinh_anh%>" alt="">
@@ -53,29 +53,21 @@
                 <a href="/giohang/add/<%=dienthoai.phone_id%>" class="btn btn-success">Thêm vào giỏ hàng</a>
             </div>
         </div>
-        <div class="row" id="noi_dung" style="text-align: justify;">
-            
-            <div class="col-lg-8 col-xs-12">
-                <h3 class="bar-xanh">Chi tiết sản phẩm</h3>
-                <% if(bai_viet){ %>
-                <%- bai_viet %> 
-                <% } %>
-            </div>
-            
-            <div class="col-lg-4 col-xs-12">
+        <div class="row" id="noi_dung">
+            <div class="col-lg-4 col-xs-12 col-sm-5 hidden-lg hidden-sm">
                 <h3 class="bar-xanh">Thông số kĩ thuật</h3>
-                <table class="table">
+                 <table class="table">
                     <tbody>
                         <tr>
-                            <td class="cot1" style="color: black;">Màn hình</td>
+                            <td style="color: black;white-space: nowrap;">Màn hình</td>
                             <td><%=dienthoai.man_hinh%></td>
                         </tr>
                         <tr>
-                            <td class="cot1" style="color: black;">Hệ điều hành</td>
+                            <td style="color: black;white-space: nowrap;">Hệ điều hành</td>
                             <td><%=dienthoai.he_dieu_hanh%></td>
                         </tr>
                         <tr>
-                            <td class="cot1" style="color: black;">Camera sau</td>
+                            <td style="color: black;">Camera sau</td>
                             <td><%=dienthoai.camera_sau%></td>
                         </tr>
                         <tr>
@@ -91,7 +83,7 @@
                             <td><%=dienthoai.ram%></td>
                         </tr>
                         <tr>
-                            <td style="color: black;">Bộ nhớ trong</td>
+                            <td style="color: black;white-space: nowrap;">Bộ nhớ trong</td>
                             <td><%=dienthoai.bo_nho_trong%></td>
                         </tr>
                         <tr>
@@ -99,7 +91,59 @@
                             <td><%=dienthoai.the_sim%></td>
                         </tr>
                         <tr>
-                            <td style="color: black;">Dung lượng pin</td>
+                            <td style="color: black;white-space: nowrap;">Dung lượng pin</td>
+                            <td><%=dienthoai.dung_luong_pin%></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="col-lg-8 col-sm-7 col-xs-12"style="text-align: justify;">
+                <h3 class="bar-xanh">Chi tiết sản phẩm</h3>
+                <% if(bai_viet){ %>
+                <%- bai_viet %> 
+                <% } %>
+            </div>
+            
+            <div class="col-lg-4 col-sm-5 col-xs-12 hidden-xs">
+                <h3 class="bar-xanh">Thông số kĩ thuật</h3>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td style="color: black;white-space: nowrap;">Màn hình</td>
+                            <td><%=dienthoai.man_hinh%></td>
+                        </tr>
+                        <tr>
+                            <td style="color: black;white-space: nowrap;">Hệ điều hành</td>
+                            <td><%=dienthoai.he_dieu_hanh%></td>
+                        </tr>
+                        <tr>
+                            <td style="color: black;">Camera sau</td>
+                            <td><%=dienthoai.camera_sau%></td>
+                        </tr>
+                        <tr>
+                            <td style="color: black;">Camera trước</td>
+                            <td><%=dienthoai.camera_truoc%></td>
+                        </tr>
+                        <tr>
+                            <td style="color: black;">CPU</td>
+                            <td><%=dienthoai.cpu%></td>
+                        </tr>
+                        <tr>
+                            <td style="color: black;">RAM</td>
+                            <td><%=dienthoai.ram%></td>
+                        </tr>
+                        <tr>
+                            <td style="color: black;white-space: nowrap;">Bộ nhớ trong</td>
+                            <td><%=dienthoai.bo_nho_trong%></td>
+                        </tr>
+                        <tr>
+                            <td style="color: black;">Thẻ sim</td>
+                            <td><%=dienthoai.the_sim%></td>
+                        </tr>
+                        <tr>
+                            <td style="color: black;white-space: nowrap;">Dung lượng pin</td>
                             <td><%=dienthoai.dung_luong_pin%></td>
                         </tr>
 
@@ -169,7 +213,6 @@
         </div>
         <% } %>
         <% } %>
-    </div>
     </div>
     <!-- footer -->
     <%- include('footer'); -%>

@@ -1,6 +1,7 @@
 var mongoose =require('mongoose');
 
 var baidangSchema = new mongoose.Schema({
+    tieu_de : String,
     noi_dung : String,
     chu_de : Array,
     tags : Array
