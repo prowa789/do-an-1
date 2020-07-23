@@ -143,11 +143,22 @@ module.exports.xacnhandonhang = async function (req, res) {
     var donhang_id = req.params.id;
     var donhang = await Donhang.findOne({ _id: donhang_id });
     // gửi mail
-    var html = "<p><span style=\"font-size: 20px;\">Đơn hàng của " + donhang.ttkh.ho_ten + " đã được xác nhận. Cảm ơn " + donhang.ttkh.ho_ten  + " đ&atilde; mua h&agrave;ng tr&ecirc;n web của ch&uacute;ng t&ocirc;i</span></p><p><span style=\"font-size: 20px;\">Chi tiết sản phẩm đ&atilde; mua :</span></p> <ul>";
-    for (var i = 0; i < donhang.san_pham.length; i++) {
-        html = html + '<li style=\"font-size: 16px;\">' + donhang.san_pham[i].name + ', số lượng : ' + donhang.san_pham[i].so_luong + '</li>';
-    }
-    html = html + '</ul>' + '<br><p style=\"font-size: 20px;\">Tổng tiền : ' + convertMoney(donhang.tong_tien) + 'đ </p>' + '<p style=\"font-size: 20px;\">Địa chỉ nhận hàng: ' + donhang.dia_chi_nhan_hang + '</p>';
+    
+    var html = `<p><span style="font-size: 18px;">Đơn h&agrave;ng của <strong>${donhang.ttkh.ho_ten}  </strong>đ&atilde; được x&aacute;c nhận. Cảm ơn <strong>${donhang.ttkh.ho_ten} </strong> đ&atilde; mua h&agrave;ng tr&ecirc;n website của ch&uacute;ng t&ocirc;i.</span></p>
+    <p><span style="font-size: 18px;"><strong>Chi tiết sản phẩm đ&atilde; mua</strong> :</span></p>
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 25%; text-align: center;"><span style="font-size: 18px;">M&atilde; sản phẩm</span></td>
+            <td style="width: 25.0000%;"><span style="font-size: 18px;">T&ecirc;n sản phẩm</span></td>
+            <td style="width: 25%; text-align: center;"><span style="font-size: 18px;">Số lượng&nbsp;</span></td>
+            <td style="width: 25%; text-align: center;"><span style="font-size: 18px;">Đơn gi&aacute;</span></td>
+        </tr>
+        <tbody>
+        ${createTableData(donhang)}
+        </tbody>
+    </table>
+    <p><span style="font-size: 18px;"><strong>Địa chỉ nhận h&agrave;ng :</strong> ${donhang.dia_chi_nhan_hang}</span></p>
+    <p><span style="font-size: 18px;"><strong>Tổng tiền : </strong>${convertMoney(donhang.tong_tien)} đ </span></p>`
     var transporter = nodemailer.createTransport({ // config mail server
         service: 'gmail',
         auth: {
@@ -200,4 +211,18 @@ function convertMoney(money) {
         k += 3;
     }
     return string;
+}
+
+function createTableData(donhang){
+    var data="";
+    for(var i=0;i<donhang.san_pham.length;i++)
+    {
+        data +=`<tr>
+        <td style="width: 25%; text-align: center;"><span style="font-size: 18px;">${donhang.san_pham[i].phone_id}</span></td>
+        <td style="width: 25%; text-align: center;"><span style="font-size: 18px;">${donhang.san_pham[i].name}s<br></span></td>
+        <td style="width: 25%; text-align: center;"><span style="font-size: 18px;">${donhang.san_pham[i].so_luong} chiếc</span></td>
+        <td style="width: 25%; text-align: center;"><span style="font-size: 18px;">${donhang.san_pham[i].gia_hien_thi} đ</span></td>
+        </tr>`
+    }
+    return data;
 }

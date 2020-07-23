@@ -54,8 +54,8 @@
                     <td data-th="Price"><%= cart.san_pham[i].gia_hien_thi %></td>
                     <td data-th="Quantity">
                         <div class="choosenumber">
-                            <input type="hidden" id="phone_id" name="phone_id" value="<%= cart.san_pham[i].phone_id %>">
-                            <input type="hidden" id="so_luong" name="so_luong" value="<%= cart.san_pham[i].so_luong %>">
+                            <input type="hidden" class="phone_id" name="phone_id" value="<%= cart.san_pham[i].phone_id %>">
+                            <input type="hidden" class="so_luong" name="so_luong" value="<%= cart.san_pham[i].so_luong %>">
                             <!-- <a href="/giohang/substract/<%= cart.san_pham[i].phone_id%>">
                                     <div class="abate"></div>
                                 </a>
@@ -89,8 +89,8 @@
                             class="fa fa-angle-left"></i> Tiếp tục mua hàng</a>
                 </div>
                 <div class="col-sm-4 col-sm-offset-3 col-xs-12 text-center" style="padding: 15px 0 15px 0;">
-                    <input type="hidden" id="tong_tien" value="<%=cart.tong_tien%>">
-                    <strong style="font-size: 18px;" id="tong_tien_text">Tổng tiền :<%=tong_tien%>đ</strong>
+                    <input type="hidden" class="tong_tien" value="<%=cart.tong_tien%>">
+                    <strong style="font-size: 18px;" class="tong_tien_text">Tổng tiền :<%=tong_tien%>đ</strong>
                 </div>
             </div>
         </div>
@@ -165,18 +165,21 @@
 
 
         $('.augment').click(function () {
-            var phone_id = $('.augment,.abate').siblings('#phone_id').val();
-            var so_luong = parseInt($('.number').text());
+            var phone_id = $(this).siblings('.phone_id').val();
+            console.log(phone_id);
+            var so_luong = parseInt($(this).siblings('.number').text());
             if(so_luong <= 0) return;
             $.ajax({
                 url: '/api/giohang/add/' + phone_id,
                 type: 'GET',
             }).done(function (ketqua) {
                 console.log(ketqua);
-                $('#tong_tien_text').text("Tổng tiền :" + convertMoney(ketqua.tong_tien) + "đ");
+                $('.tong_tien_text').text("Tổng tiền :" + convertMoney(ketqua.tong_tien) + "đ");
                 for(var i =0; i < ketqua.san_pham.length;i++){
                     if(ketqua.san_pham[i].phone_id == phone_id){
-                        $('.augment').siblings('.number').text(ketqua.san_pham[i].so_luong);
+                        $("input[value='"+ phone_id+"']").siblings('.number').text(ketqua.san_pham[i].so_luong);
+
+  
                         
                     }
                     
@@ -184,28 +187,25 @@
             });
         });
         $('.abate').click(function () {
-            var phone_id = $('.augment,.abate').siblings('#phone_id').val();
-            var so_luong = parseInt($('.number').text());
+            console.log($(this).siblings('.phone_id').val());
+            var phone_id = $(this).siblings('.phone_id').val();
+            var so_luong = parseInt($(this).siblings('.number').text());
             if(so_luong <= 0) return;
             $.ajax({
                 url: '/api/giohang/substract/' + phone_id,
                 type: 'GET',
             }).done(function (ketqua) {
                 console.log(ketqua);
-                console.log($('.abate').siblings('.number').text());
 
-                $('#tong_tien_text').text("Tổng tiền :" + convertMoney(ketqua.tong_tien) + "đ");
+                $('.tong_tien_text').text("Tổng tiền :" + convertMoney(ketqua.tong_tien) + "đ");
                
-                
-            
-                for(var i =0; i<ketqua.san_pham.length;i++){
+                for(var i =0; i< ketqua.san_pham.length;i++){
                     if(ketqua.san_pham[i].phone_id == phone_id){
-                        // console.log(ketqua.san_pham[i].so_luong);
-                        $('.abate').siblings('.number').text(ketqua.san_pham[i].so_luong);
+                        $("input[value='"+ phone_id+"']").siblings('.number').text(ketqua.san_pham[i].so_luong);
                         return;
                     }
                 }
-                $('.abate').parent().parent().parent().remove();
+                $('#'+phone_id).remove();
                 $('#errors').text("Không có sản phẩm nào trong giỏ hàng");
                 
             });
