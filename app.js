@@ -27,7 +27,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
     secret: 'somesecret',
-    cookie: { maxAge: 10 * 60 * 1000 } // session tồn tại trong 10 phút
+    cookie: { maxAge: 60 * 60 * 1000 } //session tồn tại trong 60 phút
 })); 
 app.use(bodyParser.json()); // for parsing application/json
 app.set('view engine', 'ejs');// dung template ejs

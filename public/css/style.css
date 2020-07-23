@@ -1,12 +1,12 @@
-@charset "UTF-8";
+
 body {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     font-family: 'Roboto Condensed', sans-serif;
     letter-spacing: 0px;
-    font-size: 16px;
+    font-size: 18px;
     color: #848687;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 30px;
     background-color: #f3f5f7;
 }
@@ -19,21 +19,21 @@ h5,
 h6 {
     color: #1c1e1e;
     margin: 0px 0px 15px 0px;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 h1 {
-    font-size: 30px;
+    font-size: 32px;
     line-height: 42px;
 }
 
 h2 {
-    font-size: 24px;
+    font-size: 26px;
     line-height: 32px;
 }
 
 h3 {
-    font-size: 22px;
+    font-size: 24px;
     line-height: 30px;
 }
 
@@ -54,7 +54,7 @@ h6 {
 
 p {
     margin: 0 0 24px;
-    line-height: 1.8;
+    line-height: 1.6;
 }
 
 p:last-child {
@@ -70,7 +70,7 @@ ol {
 
 a {
     text-decoration: none;
-    color: #1c1e1e;
+    color: blue;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
@@ -3194,7 +3194,7 @@ img {
 .key-features p {
     font-size: 14px;
 }
-#noi_dung img{
+.content img{
     width: fit-content;
 }
 
@@ -3226,7 +3226,7 @@ img {
 
 /* Small Devices, Tablets */
 @media only screen and (max-width:768px) {
-    #noi_dung img{
+    .content img{
         width: fit-content;
     }
     .search-bg {
@@ -3512,7 +3512,75 @@ a.checkout-btn{
     background-color: rgb(216, 5, 5);
     padding: 10px 20px 10px 20px;
 }
+.choosenumber {
+    overflow: hidden;
+    width:50%;
+    border: 1px solid #dfdfdf;
+    background: #fff;
+    border-radius: 3px;
+    line-height: 32px;
+    font-size: 14px;
+    color: #333;
+    margin: 5px 0 5px 0;
+
+}
+.abate {
+    float: left;
+    border-right: 1px solid #dfdfdf;
+    background: #fff;
+    width: 32%;
+    height: 32px;
+    cursor: pointer;
+}
+.number {
+    font-size: 14px;
+    color: #333;
+    float: left;
+    width: 33%;
+    height: 32px;
+    text-align: center;
+}
+.augment {
+    float: right;
+    border-left: 1px solid #dfdfdf;
+    background: #fff;
+    width: 32%;
+    height: 32px;
+    position: relative;
+    cursor: pointer;
+}
+.augment:before {
+    content: '';
+    width: 12px;
+    height: 2px;
+    background: #288ad6;
+    display: block;
+    margin: 15px auto;
+}
+.augment:after {
+    content: '';
+    width: 2px;
+    height: 12px;
+    background: #288ad6;
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+}
+.abate:before {
+    content: '';
+    width: 12px;
+    height: 2px;
+    background: #ccc;
+    display: block;
+    margin: 15px auto;
+}
 @media screen and (max-width: 768px) {
+    .choosenumber {
+        width: 25%;
+    }
     #cart .trash{
         display: block;
     }

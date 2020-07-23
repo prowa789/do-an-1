@@ -41,11 +41,10 @@ module.exports.comment_post = async function (req, res) {
         noi_dung: req.body.noi_dung,
         email: req.body.email,
         sdt: req.body.sdt,
-        ngay_gio: Date.now()
+        ngay_gio: new Date()
     });
     binhluan.save();
-    res.redirect('/dienthoai/'+phone_id);
-    
-
+    // res.redirect('/dienthoai/'+phone_id);
+    res.json(binhluan);
 }
 

@@ -18,76 +18,82 @@
     <link href="./css/font-awesome.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="/images/favicon.ico">
 
+
 </head>
 
 <body>
     <%- include('header'); -%>
     <div class="container">
-        <h1 style="padding-top: 3rem;text-align: center;">Giỏ hàng</h2>
-            <% if(cart){ %>
-            <table id="cart" class="table table-hover table-condensed">
-                <thead>
-                    <tr>
-                        <th class="col1">Tên sản phẩm</th>
-                        <th class="col2">Giá</th>
-                        <th class="col3">Số lượng</th>
-                        <th class="col4">Thao tác</th>
-                    </tr>
-                </thead>
-                <% if(locals.errors){ %>
-                    <p style="text-align: center;font-size: 30px;color:red;"><%= locals.errors[0] %></p>
-                <% } %>
-                <tbody id="cccc">
-                    
-                    <% for(var i = 0;i < cart.san_pham.length;i++){ %>
-                    <tr>
-                        <td data-th="Product">
-                            <div class="row">
-                                <div class="col-sm-2 hidden-xs"><img src="<%= cart.san_pham[i].hinh_anh %>"
-                                        alt="Sản phẩm 1" class="img-responsive" width="100px">
-                                </div>
-                                <div class="col-sm-10">
-                                    <h4 class="nomargin ten-san-pham"><%= cart.san_pham[i].name %></h4>
-                                </div>
+        <h1 style="padding-top: 3rem;text-align: center;font-family: sans-serif;">Giỏ hàng</h1>
+        <% if(cart){ %>
+        <table id="cart" class="table table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th class="col1">Tên sản phẩm</th>
+                    <th class="col2">Giá</th>
+                    <th class="col3">Số lượng</th>
+                    <th class="col4">Thao tác</th>
+                </tr>
+            </thead>
+            <% if(locals.errors){ %>
+            <p style="text-align: center;font-size: 30px;color:red;" id="errors"><%= locals.errors[0] %></p>
+            <% } %>
+            <tbody>
+                <% for(var i = 0;i < cart.san_pham.length;i++){ %>
+                <tr id="<%= cart.san_pham[i].phone_id %>">
+                    <td data-th="Product">
+                        <div class="row">
+                            <div class="col-sm-2 hidden-xs"><img src="<%= cart.san_pham[i].hinh_anh %>" alt="Sản phẩm 1"
+                                    class="img-responsive" width="100px">
                             </div>
-                        </td>
-                        <td data-th="Price"><%= cart.san_pham[i].gia_hien_thi %></td>
-                        <td data-th="Quantity">
-                            <a href="/giohang/add/<%= cart.san_pham[i].phone_id %>" class="btn btn-success clickne"
-                                style="padding:10px;display: inline;">
-                                <i class="fa fa-plus" style="padding-left:5px;box-sizing: border-box;"></i>
-                            </a>
-                            <button id="abcd"
-                                style="width:33%;padding:10px;margin-left:5px;"><%= cart.san_pham[i].so_luong %></button>
-                            <a href="/giohang/substract/<%= cart.san_pham[i].phone_id %>" class="btn btn-success clickne"
-                                style="padding:10px 10px ;display: inline;">
-                                <i class="fa fa-minus" style="padding-left:5px;box-sizing: border-box;"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="/giohang/remove/<%= cart.san_pham[i].phone_id %>" class="btn trash">
-                                <i class="fa fa-trash-o"></i>
-                            </a>
-                            </button>
-                        </td>
-                    </tr>
-                    <% } %>
+                            <div class="col-sm-10">
+                                <h4 class="nomargin ten-san-pham"><%= cart.san_pham[i].name %></h4>
+                            </div>
+                        </div>
+                    </td>
+                    <td data-th="Price"><%= cart.san_pham[i].gia_hien_thi %></td>
+                    <td data-th="Quantity">
+                        <div class="choosenumber">
+                            <input type="hidden" id="phone_id" name="phone_id" value="<%= cart.san_pham[i].phone_id %>">
+                            <input type="hidden" id="so_luong" name="so_luong" value="<%= cart.san_pham[i].so_luong %>">
+                            <!-- <a href="/giohang/substract/<%= cart.san_pham[i].phone_id%>">
+                                    <div class="abate"></div>
+                                </a>
+                                <div class="number"><%= cart.san_pham[i].so_luong %></div>
+                                <a href="/giohang/add/<%= cart.san_pham[i].phone_id%>">
+                                    <div class="augment"></div>
+                                </a> -->
+                            <div class="abate"></div>
+                            <div class="number"><%= cart.san_pham[i].so_luong %></div>
+                            <div class="augment"></div>
 
-                </tbody>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="/giohang/remove/<%= cart.san_pham[i].phone_id %>" class="btn trash">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                        </button>
+                    </td>
+                </tr>
+                <% } %>
+
+            </tbody>
 
 
-            </table>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-5 col-xs-12">
-                        <a href="/dienthoai" class="btn btn-block btn-warning" style="padding:15px;font-size: 13px;"><i
-                                class="fa fa-angle-left"></i> Tiếp tục mua hàng</a>
-                    </div>
-                    <div class="col-sm-4 col-sm-offset-3 col-xs-12 text-center" style="padding: 15px 0 15px 0;">
-                        <strong style="font-size: 18px;">Tổng tiền : <%= tong_tien %>đ</strong>
-                    </div>
+        </table>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5 col-xs-12">
+                    <a href="/dienthoai" class="btn btn-block btn-warning" style="padding:15px;font-size: 13px;"><i
+                            class="fa fa-angle-left"></i> Tiếp tục mua hàng</a>
+                </div>
+                <div class="col-sm-4 col-sm-offset-3 col-xs-12 text-center" style="padding: 15px 0 15px 0;">
+                    <input type="hidden" id="tong_tien" value="<%=cart.tong_tien%>">
+                    <strong style="font-size: 18px;" id="tong_tien_text">Tổng tiền :<%=tong_tien%>đ</strong>
                 </div>
             </div>
+        </div>
     </div>
     <% } %>
     <!-- thông tin người mua -->
@@ -133,16 +139,14 @@
                         Please enter your phone.
                     </div>
                 </div>
-                <button class="btn btn-primary bt-lg btn-block" style="height:50px;background-color: rgb(32, 32, 121);"  type="submit">Đặt hàng</button>
+                <button class="btn btn-primary bt-lg btn-block" style="height:50px;background-color: rgb(32, 32, 121);"
+                    type="submit">Đặt hàng</button>
             </form>
         </div>
     </form>
-   
+
     <%- include('footer'); -%>
-    
-
     <script src="./js/jquery.min.js" type="text/javascript"></script>
-
     <script src="./js/bootstrap.min.js" type="text/javascript"></script>
     <script src="./js/menumaker.js" type="text/javascript"></script>
     <script type="text/javascript" src="./js/jquery.sticky.js"></script>
@@ -158,6 +162,71 @@
 
             }, 500)
         });
+
+
+        $('.augment').click(function () {
+            var phone_id = $('.augment,.abate').siblings('#phone_id').val();
+            var so_luong = parseInt($('.number').text());
+            if(so_luong <= 0) return;
+            $.ajax({
+                url: '/api/giohang/add/' + phone_id,
+                type: 'GET',
+            }).done(function (ketqua) {
+                console.log(ketqua);
+                $('#tong_tien_text').text("Tổng tiền :" + convertMoney(ketqua.tong_tien) + "đ");
+                for(var i =0; i < ketqua.san_pham.length;i++){
+                    if(ketqua.san_pham[i].phone_id == phone_id){
+                        $('.augment').siblings('.number').text(ketqua.san_pham[i].so_luong);
+                        
+                    }
+                    
+                }
+            });
+        });
+        $('.abate').click(function () {
+            var phone_id = $('.augment,.abate').siblings('#phone_id').val();
+            var so_luong = parseInt($('.number').text());
+            if(so_luong <= 0) return;
+            $.ajax({
+                url: '/api/giohang/substract/' + phone_id,
+                type: 'GET',
+            }).done(function (ketqua) {
+                console.log(ketqua);
+                console.log($('.abate').siblings('.number').text());
+
+                $('#tong_tien_text').text("Tổng tiền :" + convertMoney(ketqua.tong_tien) + "đ");
+               
+                
+            
+                for(var i =0; i<ketqua.san_pham.length;i++){
+                    if(ketqua.san_pham[i].phone_id == phone_id){
+                        // console.log(ketqua.san_pham[i].so_luong);
+                        $('.abate').siblings('.number').text(ketqua.san_pham[i].so_luong);
+                        return;
+                    }
+                }
+                $('.abate').parent().parent().parent().remove();
+                $('#errors').text("Không có sản phẩm nào trong giỏ hàng");
+                
+            });
+        });
+        function convertMoney(money) {
+            var string = "";
+            var chuoi_ban_dau = money.toString();
+            var len = money.toString().length;
+            var k = len % 3;
+            if (k == 0) { len = len / 3 } else { len = len / 3 - 1 };
+            var temp = chuoi_ban_dau.slice(0, k);
+            string += temp;
+            for (var i = 0; i < len; i++) {
+                if (k != 0) { string += "."; }
+                temp = chuoi_ban_dau.slice(k, k + 3);
+                string += temp;
+                k += 3;
+            }
+            return string;
+        }
+
     </script>
 </body>
 
