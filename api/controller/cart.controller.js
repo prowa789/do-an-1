@@ -65,8 +65,8 @@ module.exports.substract= async function (req, res) {
     for (var i = 0; i < cart.san_pham.length; i++) {
         if (cart.san_pham[i].phone_id == phone_id) {
             cart.san_pham[i].so_luong--;
-            if(cart.san_pham[i].so_luong==0){
-                cart.san_pham.pop(cart.san_pham[i]);
+            if(cart.san_pham[i].so_luong == 0){
+                cart.san_pham.splice(i,1);
             }
             res.json(cart);
             return;
@@ -87,7 +87,7 @@ module.exports.remove = async function (req, res) {
         if (cart.san_pham[i].phone_id == phone_id) {
             cart.tong_tien-= cart.san_pham[i].gia*cart.san_pham[i].so_luong;
             cart.tong_san_pham -= cart.san_pham[i].so_luong;
-            cart.san_pham.pop(cart.san_pham[i]);
+            cart.san_pham.splice(i,1);
             res.redirect('/giohang');
             return;
         }

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Trang chủ </title>
+    <title> Giỏ hàng </title>
     <link href="./css/bootstrap.min.css" rel="stylesheet">
 
     <link href="./css/style.css" rel="stylesheet">
@@ -162,54 +162,51 @@
 
             }, 500)
         });
-
-
-        $('.augment').click(function () {
+        $(document).ready(function(){
+            $('.augment').click(function () {
             var phone_id = $(this).siblings('.phone_id').val();
             console.log(phone_id);
-            var so_luong = parseInt($(this).siblings('.number').text());
-            if(so_luong <= 0) return;
             $.ajax({
                 url: '/api/giohang/add/' + phone_id,
                 type: 'GET',
-            }).done(function (ketqua) {
-                console.log(ketqua);
-                $('.tong_tien_text').text("Tổng tiền :" + convertMoney(ketqua.tong_tien) + "đ");
-                for(var i =0; i < ketqua.san_pham.length;i++){
-                    if(ketqua.san_pham[i].phone_id == phone_id){
-                        $("input[value='"+ phone_id+"']").siblings('.number').text(ketqua.san_pham[i].so_luong);
-
-  
-                        
+            }).done(function (cart) {
+                console.log(cart);
+                $('.tong_tien_text').text("Tổng tiền :" + convertMoney(cart.tong_tien) + "đ");
+                for(var i =0; i < cart.san_pham.length;i++){
+                    if(cart.san_pham[i].phone_id == phone_id){
+                        $("input[value='"+ phone_id+"']").siblings('.number').text(cart.san_pham[i].so_luong);
                     }
                     
                 }
             });
         });
         $('.abate').click(function () {
-            console.log($(this).siblings('.phone_id').val());
+           
             var phone_id = $(this).siblings('.phone_id').val();
-            var so_luong = parseInt($(this).siblings('.number').text());
-            if(so_luong <= 0) return;
+            console.log(phone_id);
             $.ajax({
                 url: '/api/giohang/substract/' + phone_id,
                 type: 'GET',
-            }).done(function (ketqua) {
-                console.log(ketqua);
+            }).done(function (cart) {
+                console.log(cart);
+                $('.tong_tien_text').text("Tổng tiền :" + convertMoney(cart.tong_tien) + "đ");
+                for(var i = 0; i < cart.san_pham.length;i++){
 
-                $('.tong_tien_text').text("Tổng tiền :" + convertMoney(ketqua.tong_tien) + "đ");
-               
-                for(var i =0; i< ketqua.san_pham.length;i++){
-                    if(ketqua.san_pham[i].phone_id == phone_id){
-                        $("input[value='"+ phone_id+"']").siblings('.number').text(ketqua.san_pham[i].so_luong);
+                    if(cart.san_pham[i].phone_id == phone_id){
+                        $("input[value='"+ phone_id+"']").siblings('.number').text(cart.san_pham[i].so_luong);
                         return;
                     }
                 }
-                $('#'+phone_id).remove();
-                $('#errors').text("Không có sản phẩm nào trong giỏ hàng");
-                
+                $('tr#'+phone_id).remove();
+                if(cart.tong_san_pham == 0){
+                    $('#errors').text("Không có sản phẩm nào trong giỏ hàng");
+                }
+        
             });
-        });
+        }); 
+        })
+       
+        
         function convertMoney(money) {
             var string = "";
             var chuoi_ban_dau = money.toString();
