@@ -22,6 +22,8 @@
 </head>
 
 <body>
+    <div class="loading-spinner"></div>
+
     <%- include('header'); -%>
     <div class="container">
         <h1 style="padding-top: 3rem;text-align: center;font-family: sans-serif;">Giỏ hàng</h1>
@@ -156,6 +158,15 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <script>
+    //    $(document).ready(function(){
+    //     $(document).ajaxStart(function() {
+    //     $(".loading-spinner").fadeIn(500);
+    //     });
+    //     $(document).ajaxStop(function() {
+    //     $(".loading-spinner").fadeOut(50);
+    //     });
+    //     });
+
         document.getElementById("search-input").addEventListener("input", function () {
             let val = document.getElementById("search-input").value;
             setTimeout(function () {

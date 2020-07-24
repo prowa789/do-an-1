@@ -106,7 +106,6 @@ module.exports.remove = async function (req, res) {
         return;
     }
     var dienthoai = await Dienthoai.find({ phone_id: phone_id });
-    
     for (var i = 0; i < cart.san_pham.length; i++) {
         if (cart.san_pham[i].phone_id == phone_id) {
             cart.tong_tien-= cart.san_pham[i].gia*cart.san_pham[i].so_luong;
