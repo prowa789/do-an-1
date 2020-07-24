@@ -21,6 +21,7 @@ module.exports.index = async function (req, res) {
         dienthoai: dienthoai,
         page: page,
         number: numberOfPage,
+        url :req.baseUrl
     })
 }
 module.exports.show = async function (req, res) {
