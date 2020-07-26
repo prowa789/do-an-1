@@ -6,7 +6,7 @@ module.exports.filter = async function (req, res) {
     var query = req.query; // lấy query của người dùng
     var wrongs = [];
     if (query.brand && query.gia) {
-        var gia = query.gia.match(/\d/g).join(""); // trả về chuỗi, lấy sô từ chuỗi . join để nối chuỗi
+        var gia = query.gia.match(/\d/g).join(""); // ham join() trả về chuỗi, lấy sô từ chuỗi . join để nối chuỗi ,match tra ve mang
         console.log(gia)
         //code
         if (gia.length == 4) {
