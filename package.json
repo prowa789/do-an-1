@@ -13,7 +13,7 @@
     "js-htmlencode": "^0.3.0",
     "lowdb": "1.0.0",
     "mongoose": "5.9.7",
-    "nodemailer": "^6.4.10",
+    "nodemailer": "^6.4.16",
     "nodemon": "2.0.2",
     "query-string": "^6.13.1",
     "shortid": "2.2.15"
